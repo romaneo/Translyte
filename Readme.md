@@ -1,7 +1,5 @@
 					Structure of project:
 
-	TranslyteAndroid - UI and bindings for Android platform;
+	Translyte.Android - UI and bindings for Android platform;
 
-	Translyte.BusinessLayer - core business logic layer;
-
-	Translate.DataAccessLayer - data access with Entity Framework.
+	Translyte.Core - main crossplatform layer: business logic, data access.
