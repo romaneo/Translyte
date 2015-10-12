@@ -90,6 +90,12 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f040000
 			public const int MvxBindingTagUnique = 2130968576;
 			
+			// aapt resource value: 0x7f040002
+			public const int tv_book = 2130968578;
+			
+			// aapt resource value: 0x7f040001
+			public const int tv_title = 2130968577;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -104,7 +110,7 @@ namespace Translyte.Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int FirstView = 2130903040;
+			public const int BookView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
 			public const int SplashScreen = 2130903041;
