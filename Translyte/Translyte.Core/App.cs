@@ -1,4 +1,5 @@
 using Cirrious.CrossCore.IoC;
+using Translyte.Core.Parse;
 
 namespace Translyte.Core
 {
@@ -6,12 +7,14 @@ namespace Translyte.Core
     {
         public override void Initialize()
         {
+            ParseAdapter.InitializeApp();
+
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.DropboxViewModel>();
+            RegisterAppStart<ViewModels.AuthenticationViewModel>();
             
         }
     }
