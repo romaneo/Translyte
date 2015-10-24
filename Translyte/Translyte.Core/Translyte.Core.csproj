@@ -40,6 +40,7 @@
     <Compile Include="Models\ChapterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+    <Compile Include="ViewModels\DropboxViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
