@@ -10,8 +10,9 @@ namespace Translyte.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-				
-            RegisterAppStart<ViewModels.BookViewModel>();
+
+            RegisterAppStart<ViewModels.DropboxViewModel>();
+            
         }
     }
 }

@@ -93,8 +93,14 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f040002
 			public const int ll_bookContent = 2130968578;
 			
+			// aapt resource value: 0x7f040006
+			public const int lstBooksName = 2130968582;
+			
 			// aapt resource value: 0x7f040001
 			public const int sv_bookContent = 2130968577;
+			
+			// aapt resource value: 0x7f040005
+			public const int textView1 = 2130968581;
 			
 			// aapt resource value: 0x7f040004
 			public const int tv_book = 2130968580;
@@ -119,7 +125,10 @@ namespace Translyte.Android
 			public const int BookView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int SplashScreen = 2130903041;
+			public const int DropboxView = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int SplashScreen = 2130903042;
 			
 			static Layout()
 			{

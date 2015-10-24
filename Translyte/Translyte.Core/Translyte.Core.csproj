@@ -49,8 +49,12 @@
     <Compile Include="Statistic.cs" />
     <Compile Include="Translator.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+<<<<<<< HEAD
     <Compile Include="WordSaver.cs" />
     <Compile Include="WordService.cs" />
+=======
+    <Compile Include="ViewModels\DropboxViewModel.cs" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="CoreCD.cd" />
