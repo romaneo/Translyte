@@ -17,6 +17,8 @@ namespace Translyte.Core.ViewModels
         public AuthenticationViewModel()
         {
             _currentUser = new ParseUser();
+            if (ParseUser.CurrentUser != null)
+                ShowViewModel<BookViewModel>();
         }
 
         public string UserName

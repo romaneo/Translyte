@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Parse;
 using Translyte.Core.Models;
 
@@ -35,12 +38,24 @@ namespace Translyte.Core.Parse
             }
             catch (Exception)
             {
-                new ParseUser(){Username = userName, Password = userPasword}.SignUpAsync();
+                new ParseUser() { Username = userName, Password = userPasword }.SignUpAsync();
             }
-            
             
         }
 
+        //public static async void SaveBook()
+        //{
+        //    XDocument xdoc = XDocument.Load("/sdcard/translyte/gg.fb2");
+        //    Stream str = new MemoryStream();
+        //    xdoc.Save(str);
+        //    str.Position = 0;
+        //    ParseFile file = new ParseFile("gg.fb2", str);
+        //    await file.SaveAsync();
+
+        //    ParseObject newFile = new ParseObject("BookFile");
+        //    newFile["File"] = file;
+        //    await newFile.SaveAsync();
+        //}
 
     }
 }

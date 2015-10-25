@@ -90,14 +90,20 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f040000
 			public const int MvxBindingTagUnique = 2130968576;
 			
-			// aapt resource value: 0x7f040007
-			public const int ll_bookContent = 2130968583;
+			// aapt resource value: 0x7f04000e
+			public const int TradeConfirmation = 2130968590;
+			
+			// aapt resource value: 0x7f040008
+			public const int checkBox1 = 2130968584;
+			
+			// aapt resource value: 0x7f04000a
+			public const int ll_bookContent = 2130968586;
 			
 			// aapt resource value: 0x7f040002
 			public const int loginText = 2130968578;
 			
-			// aapt resource value: 0x7f04000b
-			public const int lstBooksName = 2130968587;
+			// aapt resource value: 0x7f040006
+			public const int lstItemTask = 2130968582;
 			
 			// aapt resource value: 0x7f040004
 			public const int passwordText = 2130968580;
@@ -105,11 +111,11 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f040005
 			public const int signUpButton = 2130968581;
 			
-			// aapt resource value: 0x7f040006
-			public const int sv_bookContent = 2130968582;
+			// aapt resource value: 0x7f040009
+			public const int sv_bookContent = 2130968585;
 			
-			// aapt resource value: 0x7f04000a
-			public const int textView1 = 2130968586;
+			// aapt resource value: 0x7f04000d
+			public const int textView1 = 2130968589;
 			
 			// aapt resource value: 0x7f040003
 			public const int textView2 = 2130968579;
@@ -117,11 +123,14 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f040001
 			public const int textView3 = 2130968577;
 			
-			// aapt resource value: 0x7f040009
-			public const int tv_book = 2130968585;
+			// aapt resource value: 0x7f04000c
+			public const int tv_book = 2130968588;
 			
-			// aapt resource value: 0x7f040008
-			public const int tv_title = 2130968584;
+			// aapt resource value: 0x7f04000b
+			public const int tv_title = 2130968587;
+			
+			// aapt resource value: 0x7f040007
+			public const int txtName = 2130968583;
 			
 			static Id()
 			{
@@ -140,13 +149,16 @@ namespace Translyte.Android
 			public const int AuthenticationView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int BookView = 2130903041;
+			public const int BookItem = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int DropboxView = 2130903042;
+			public const int BookView = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int SplashScreen = 2130903043;
+			public const int LibraryView = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int SplashScreen = 2130903044;
 			
 			static Layout()
 			{

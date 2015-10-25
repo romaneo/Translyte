@@ -86,7 +86,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AuthenticationView.cs" />
     <Compile Include="Views\BookView.cs" />
-    <Compile Include="Views\DropboxView.cs" />
+    <Compile Include="Views\LibararyView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -94,8 +94,11 @@
     <None Include="Assets\AboutAssets.txt" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\layout\BookView.axml" />
-    <AndroidResource Include="Resources\layout\DropboxView.axml" />
+    <AndroidResource Include="Resources\layout\LibraryView.axml" />
     <AndroidResource Include="Resources\layout\AuthenticationView.axml" />
+    <AndroidResource Include="Resources\layout\BookItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

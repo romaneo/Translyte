@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -10,10 +11,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:gravity="center" />
-    <ListView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lstBooksName" />
+    <Mvx.MvxListView
+        android:id="@+id/TradeConfirmation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="ItemsSource BooksList"
+        local:MvxItemTemplate="@layout/bookitem">
+    </Mvx.MvxListView>
 </LinearLayout>
