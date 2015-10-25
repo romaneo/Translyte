@@ -10,14 +10,15 @@ namespace Translyte.Core.ViewModels
     {
         public BookViewModel()
         {
+            //Path = "/sdcard/Oz.fb2";
             Path = "/sdcard/translyte/gg.fb2";
-            _book = BookReader.Load(Path);
-            _title = _book.Chapters[1].Title;
-            _content = _book.Chapters[1].Content;
-            
+            _book = new BookFullModel(Path);
+            Book.Load(ref _book);
+            _title = ((BookFullModel)_book).Chapters[1].Title;
+            _content = ((BookFullModel)_book).Chapters[1].Content;
         }
-        //private readonly IMvxFileStore _fs;
-        private BookModel _book;
+        
+        private Book _book;
         public string Path { get; set; }
         private string _title;
         public string Title

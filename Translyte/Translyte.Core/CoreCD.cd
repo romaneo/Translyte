@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Translyte.Core.FB2Parser">
+    <Position X="5.5" Y="0.5" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FB2Parser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Translyte.Core.EPUBParser">
+    <Position X="0.5" Y="2.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EPUBParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Translyte.Core.MOBYParser">
+    <Position X="5.5" Y="2.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MOBYParser.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Translyte.Core.Models.BookReviewModel">
+    <Position X="10.75" Y="4.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BookReviewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Models.BookFullModel">
+    <Position X="15" Y="4.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAADAAAAAAAAAIAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\BookFullModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Book">
+    <Position X="12.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAgEAAgAAAAAAAAAAAAAAAAAAEACAAAAA=</HashCode>
+      <FileName>Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Statistic">
+    <Position X="16.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAgAAAAAAAAACAAAA=</HashCode>
+      <FileName>Statistic.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Book" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Translyte.Core.Models.ChapterModel">
+    <Position X="6.25" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ChapterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Galary">
+    <Position X="0.5" Y="8" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAgAAIAAAAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Galary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Translator">
+    <Position X="19.75" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Translator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.WordService">
+    <Position X="19.25" Y="5.75" Width="1.5" />
+    <AssociationLine Name="WordSaver" Type="Translyte.Core.WordSaver" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19.625" Y="5.75" />
+        <Point X="19.625" Y="5.375" />
+        <Point X="18.75" Y="5.375" />
+        <Point X="18.75" Y="3.603" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Translator" Type="Translyte.Core.Translator" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="20.375" Y="5.75" />
+        <Point X="20.375" Y="5.375" />
+        <Point X="21.125" Y="5.375" />
+        <Point X="21.125" Y="4.247" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAABAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WordService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WordSaver" />
+      <Property Name="Translator" />
+      <Property Name="BookFullModel" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Translyte.Core.WordSaver">
+    <Position X="17.5" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WordSaver.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Translyte.Core.Settings">
+    <Position X="6.25" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIIAAAAAAACAAAAAAAAAAAAAACAIA=</HashCode>
+      <FileName>Settings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Translyte.Core.IParser">
+    <Position X="0.5" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IParser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

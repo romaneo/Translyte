@@ -10,4 +10,10 @@ namespace Translyte.Core.Models
         public string Title { get; set; }
         public string Content { get; set; } 
     }
+
+    public class CopyOfChapterModel
+    {
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
 }
