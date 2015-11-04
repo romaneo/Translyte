@@ -36,8 +36,8 @@ namespace Translyte.Core
                 case "epub":
                     parser = new EPUBParser();
                     break;
-                case "moby":
-                    parser = new MOBYParser();
+                case "mobi":
+                    parser = new MOBIParser();
                     break;
                 default: return;
             }
