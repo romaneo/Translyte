@@ -12,7 +12,7 @@ using Translyte.Core.Models;
 
 namespace Translyte.Core.Parse
 {
-    class ParseAdapter
+    public class ParseAdapter
     {
         private const string AppId = "5iwX6JgTYmHJcwUsbbbtJYy0sRf8OOns8CLdMcqz";
         private const string DotNetKey = "6MeGivIrAf2tvIUhTXLeIJ9ShwrUKgtPxAoUai4g";
@@ -43,19 +43,37 @@ namespace Translyte.Core.Parse
             
         }
 
-        //public static async void SaveBook()
-        //{
-        //    XDocument xdoc = XDocument.Load("/sdcard/translyte/gg.fb2");
-        //    Stream str = new MemoryStream();
-        //    xdoc.Save(str);
-        //    str.Position = 0;
-        //    ParseFile file = new ParseFile("gg.fb2", str);
-        //    await file.SaveAsync();
+        public async void AddBook(BookReviewModel book)
+        {
+            XDocument xdoc = XDocument.Load(book.BookPath);
+            Stream str = new MemoryStream();
+            xdoc.Save(str);
+            str.Position = 0;
+            ParseFile file = new ParseFile(book.Title, str);
+            await file.SaveAsync();
 
-        //    ParseObject newFile = new ParseObject("BookFile");
-        //    newFile["File"] = file;
-        //    await newFile.SaveAsync();
-        //}
+            ParseObject newFile = new ParseObject("BookFile");
+            newFile["File"] = file;
+            await newFile.SaveAsync();
+
+            var newBook = new ParseObject("Book");
+            newBook["Author"] = book.Author;
+            newBook["Title"] = book.Title;
+            newBook["LocalBookId"] = book.ID;
+            newBook["Position"] = book.Position;
+            newBook["File"] = file;
+            newBook["User"] = ParseUser.CurrentUser;
+            await newBook.SaveAsync();
+        }
+
+        public async Task<string> GetBookByLocalId(string localBookId)
+        {
+            var query = ParseObject.GetQuery("Book")
+    .WhereEqualTo("localBookId", localBookId);
+            ParseObject results = await query.FirstOrDefaultAsync();
+            var s = results.ClassName;
+            return results.ToString();
+        }
 
     }
 }

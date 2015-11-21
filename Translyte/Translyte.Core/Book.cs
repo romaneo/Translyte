@@ -12,8 +12,9 @@ namespace Translyte.Core
         public Book(string bookPath)
         {
             BookPath = bookPath;
+            Position = 0;
         }
-
+        public int Position { get; set; }
         public string ID { get; set; }
 
         public string Author { get; set; }
@@ -37,7 +38,7 @@ namespace Translyte.Core
                     parser = new EPUBParser();
                     break;
                 case "mobi":
-                    parser = new MOBIParser();
+                    parser = new MOBYParser();
                     break;
                 default: return;
             }
