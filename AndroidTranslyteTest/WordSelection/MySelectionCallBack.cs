@@ -1,54 +1,60 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-
 using Android.App;
 using Android.Content;
+using Android.Graphics;
+using Android.Net;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
+using Java.Lang;
+using Java.Util;
+
+using System;
+using String = System.String;
+using File = Java.IO.File;
+using Math = System.Math;
+using Uri = Android.Net.Uri;
 
 namespace WordSelection
 {
-    class MyNewCallBack: ActionMode.ICallback
+//{
+//    class MyNewCallBack: ActionMode.ICallback
+//    {
+
+//        public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public bool OnCreateActionMode(ActionMode mode, IMenu menu)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public void OnDestroyActionMode(ActionMode mode)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public IntPtr Handle
+//        {
+//            get { throw new NotImplementedException(); }
+//        }
+
+//        public void Dispose()
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+
+    public class MySelectionCallBack : Java.Lang.Object, ActionMode.ICallback
     {
 
-        public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool OnCreateActionMode(ActionMode mode, IMenu menu)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnDestroyActionMode(ActionMode mode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IntPtr Handle
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class MySelectionCallBack : ActionMode.ICallback, IJavaObject
-    {
 
         public MySelectionCallBack (TextView book)
         {
@@ -108,14 +114,14 @@ namespace WordSelection
             return true;
         }
 
-        public IntPtr Handle
-        {
-            get { return Marshal.StringToHGlobalAnsi("Translyte"); }
-        }
+        //public IntPtr Handle
+        //{
+        //    get { return Marshal.StringToHGlobalAnsi("Translyte"); }
+        //}
 
-        public void Dispose()
-        {
-            //throw new NotImplementedException();
-        }
+        //public void Dispose()
+        //{
+        //    //throw new NotImplementedException();
+        //}
     }
 }

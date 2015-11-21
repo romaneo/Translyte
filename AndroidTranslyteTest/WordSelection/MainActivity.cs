@@ -16,7 +16,7 @@ namespace WordSelection
     public class MainActivity : Activity
     {
         int count = 1;
-
+        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,7 +31,7 @@ namespace WordSelection
 
             TextView book = FindViewById<TextView>(Resource.Id.tv_book);
             book.SetTextIsSelectable(true);
-            //book.CustomSelectionActionModeCallback = new MySelectionCallBack(book);
+            book.CustomSelectionActionModeCallback = new MySelectionCallBack(book);
         }
     }
 }
