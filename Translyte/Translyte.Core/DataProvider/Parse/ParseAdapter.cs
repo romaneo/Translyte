@@ -66,13 +66,36 @@ namespace Translyte.Core.Parse
             await newBook.SaveAsync();
         }
 
-        public async Task<string> GetBookByLocalId(string localBookId)
+        public BookReviewModel GetBookByLocalId(string localBookId)
         {
             var query = ParseObject.GetQuery("Book")
-    .WhereEqualTo("localBookId", localBookId);
-            ParseObject results = await query.FirstOrDefaultAsync();
-            var s = results.ClassName;
-            return results.ToString();
+    .WhereEqualTo("LocalBookId", localBookId);
+            var result = query.FirstOrDefaultAsync().GetAwaiter().GetResult();
+
+            var bookResult = new BookReviewModel();
+            bookResult.Position = result.Get<int>("Position");
+            bookResult.Author = result.Get<string>("Author");
+            bookResult.Title = result.Get<string>("Title");
+            bookResult.ID = result.Get<string>("LocalBookId");
+            return bookResult;
+        }
+
+        public List<BookReviewModel> GetBooks()
+        {
+            var query = ParseObject.GetQuery("Book");
+
+            var result = query.FindAsync().GetAwaiter().GetResult();
+            var books = new List<BookReviewModel>();
+            var book = new BookReviewModel();
+            foreach (var res in result)
+            {
+                book.Position = res.Get<int>("Position");
+                book.Author = res.Get<string>("Author");
+                book.Title = res.Get<string>("Title");
+                book.ID = res.Get<string>("LocalBookId");
+                books.Add(book);
+            }
+            return books;
         }
 
     }

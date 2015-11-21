@@ -9,5 +9,7 @@ namespace Translyte.Core.Models
     {
         public BookReviewModel(string bookPath) : base(bookPath) { }
 
+        public BookReviewModel() : base("") { }
+
     }
 }
