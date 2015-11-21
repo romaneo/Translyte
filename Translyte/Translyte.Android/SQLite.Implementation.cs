@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 using System.Linq.Expressions;
-using Translyte.Core.DataProvider.SQLite;
 
 #if USE_CSHARP_SQLITE
 using Community.CsharpSqlite;

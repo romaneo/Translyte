@@ -62,10 +62,6 @@
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
-    <Reference Include="DropboxSync.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\DropboxSync.Android.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -79,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugTrace.cs" />
-    <Compile Include="API\DropboxSync.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +83,9 @@
     <Compile Include="Views\AuthenticationView.cs" />
     <Compile Include="Views\BookView.cs" />
     <Compile Include="Views\LibararyView.cs" />
+    <Compile Include="..\Translyte.Core\DataProvider\SQLite\SQLite.Implementation.cs">
+      <Link>SQLite.Implementation.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -124,9 +122,8 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lib\DropboxSync.Android.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Folder Include="API\" />
+    <Folder Include="Lib\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

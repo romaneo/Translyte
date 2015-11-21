@@ -35,10 +35,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="DataProvider\SQLite\BookDB.cs" />
+    <Compile Include="DataProvider\SQLite\BookRepository.cs" />
+    <Compile Include="DataProvider\SQLite\BusinessEntityBase.cs" />
+    <Compile Include="DataProvider\SQLite\IBusinessEntity.cs" />
     <Compile Include="DataProvider\SQLite\SQLite.cs" />
     <Compile Include="DataProvider\TranslyteDbGateway.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookFullModel.cs" />
+    <Compile Include="Models\BookLocal.cs" />
     <Compile Include="Models\BookReviewModel.cs" />
     <Compile Include="Parsers\EPUBParser.cs" />
     <Compile Include="Parsers\FB2Parser.cs" />
