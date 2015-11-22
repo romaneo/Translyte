@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Hardware.Display;
@@ -8,6 +9,8 @@ using Android.Widget;
 using Android.OS;
 using Android.Speech;
 using Java.Lang;
+using WordSelection.Adapters;
+using WordSelection.ViewModels;
 using Math = System.Math;
 
 namespace WordSelection
@@ -15,8 +18,6 @@ namespace WordSelection
     [Activity(Label = "WordSelection", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
-        int count = 1;
-        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -24,14 +25,51 @@ namespace WordSelection
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.MyButton);
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            //TextView book = FindViewById<TextView>(Resource.Id.tv_book);
+            //book.SetTextIsSelectable(true);
+            //book.CustomSelectionActionModeCallback = new MySelectionCallBack(book);
 
-            TextView book = FindViewById<TextView>(Resource.Id.tv_book);
-            book.SetTextIsSelectable(true);
-            book.CustomSelectionActionModeCallback = new MySelectionCallBack(book);
+            List<GalleryBookItem> items = new List<GalleryBookItem>();
+            items.Add(new GalleryBookItem()
+            {
+                Author = "android book",
+                Title = "android",
+                IsAvailable = true,
+                Cover = Resource.Drawable.Icon
+            });
+            items.Add(new GalleryBookItem()
+            {
+                Author = "book1",
+                Title = "book1 author",
+                IsAvailable = false,
+                Cover = Resource.Drawable.book1
+            });
+            items.Add(new GalleryBookItem()
+            {
+                Author = "book2",
+                Title = "book2 author",
+                IsAvailable = false,
+                Cover = Resource.Drawable.Icon
+            });
+            items.Add(new GalleryBookItem()
+            {
+                Author = "book3",
+                Title = "book3 author",
+                IsAvailable = false,
+                Cover = Resource.Drawable.book2
+            });
+            items.Add(new GalleryBookItem()
+            {
+                Author = "book4",
+                Title = "book4 author",
+                IsAvailable = true,
+                Cover = Resource.Drawable.book2
+            });
+            GalleryAdapter adapter = new GalleryAdapter(this, items);
+
+            ListView listView = FindViewById<ListView>(Resource.Id.ListView);
+
+            listView.Adapter = adapter;
         }
     }
 }
