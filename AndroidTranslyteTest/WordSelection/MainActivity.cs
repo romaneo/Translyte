@@ -35,7 +35,7 @@ namespace WordSelection
                 Author = "android book",
                 Title = "android",
                 IsAvailable = true,
-                Cover = Resource.Drawable.Icon
+                Cover = Resource.Drawable.book1
             });
             items.Add(new GalleryBookItem()
             {
@@ -49,7 +49,7 @@ namespace WordSelection
                 Author = "book2",
                 Title = "book2 author",
                 IsAvailable = false,
-                Cover = Resource.Drawable.Icon
+                Cover = Resource.Drawable.book2
             });
             items.Add(new GalleryBookItem()
             {

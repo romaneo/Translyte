@@ -74,6 +74,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomClasses\GalleryAdapter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AuthenticationView.cs" />
     <Compile Include="Views\BookView.cs" />
-    <Compile Include="Views\LibararyView.cs" />
+    <Compile Include="Views\LibraryView.cs" />
     <Compile Include="..\Translyte.Core\DataProvider\SQLite\SQLite.Implementation.cs">
       <Link>SQLite.Implementation.cs</Link>
     </Compile>
@@ -95,7 +96,7 @@
     <AndroidResource Include="Resources\layout\BookView.axml" />
     <AndroidResource Include="Resources\layout\LibraryView.axml" />
     <AndroidResource Include="Resources\layout\AuthenticationView.axml" />
-    <AndroidResource Include="Resources\layout\BookItem.axml">
+    <AndroidResource Include="Resources\layout\BookItemView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

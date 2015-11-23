@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,23 +9,25 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using WordSelection.ViewModels;
+using Translyte.Android;
+using Translyte.Core;
+using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 
 namespace WordSelection.Adapters
 {
-    class GalleryAdapter:BaseAdapter<GalleryBookItem>
+    class GalleryAdapter : BaseAdapter<BookViewModel>
     {
-        private List<GalleryBookItem> _items;
+        private List<BookViewModel> _items;
         private Context _context;
 
-        public GalleryAdapter(Context context, List<GalleryBookItem> items )
+        public GalleryAdapter(Context context, List<BookViewModel> items)
         {
             _items = items;
             _context = context;
         }
 
-        public override GalleryBookItem this[int position]
+        public override BookViewModel this[int position]
         {
             get { return _items[position]; }
         }

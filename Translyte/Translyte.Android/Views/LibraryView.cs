@@ -16,7 +16,7 @@ using Environment = System.Environment;
 namespace Translyte.Android.Views
 {
     [Activity(Label = "Dropbox")]
-    public class LibararyView : MvxActivity
+    public class LibraryView : MvxActivity
     {
         public TranslyteDbGateway TranslyteDbGateway { get; set; }
         Connection conn;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Translyte.Core.DataProvider.SQLiteBase;
+using Translyte.Core.Models;
 
 namespace Translyte.Core.DataProvider.SQLite
 {
@@ -23,7 +24,7 @@ namespace Translyte.Core.DataProvider.SQLite
         {
             database = conn;
             // create the tables
-            database.CreateTable<Task>();
+            var s = database.CreateTable<BookLocal>();
         }
 
         public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()

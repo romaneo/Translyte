@@ -14,7 +14,7 @@ namespace Translyte.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.AuthenticationViewModel>();
+            RegisterAppStart<ViewModels.LibraryViewModel>();
             
         }
     }
