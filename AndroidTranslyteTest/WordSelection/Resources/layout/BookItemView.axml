@@ -17,7 +17,7 @@
             <ImageView
                 android:src="@android:drawable/ic_menu_gallery"
                 android:layout_width="50dp"
-                android:layout_height="170dp"
+                android:layout_height="140dp"
                 android:id="@+id/Cover"
                 android:layout_weight="35"
                 android:padding="10dp"
