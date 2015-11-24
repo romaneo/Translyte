@@ -38,5 +38,8 @@ namespace Translyte.Core.ViewModels
                 RaisePropertyChanged(()=>Content); 
             } 
         }
+        public int Cover { get; set; }
+        public string Author { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

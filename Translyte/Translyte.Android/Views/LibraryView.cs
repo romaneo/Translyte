@@ -9,13 +9,15 @@ using Android.Widget;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.MvvmCross.Droid.Views;
+using Translyte.Android.CustomClasses;
 using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
+using Translyte.Core.ViewModels;
 using Environment = System.Environment;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "Dropbox")]
+    [Activity(Label = "Library")]
     public class LibraryView : MvxActivity
     {
         public TranslyteDbGateway TranslyteDbGateway { get; set; }
@@ -30,6 +32,48 @@ namespace Translyte.Android.Views
             conn = new Connection(path);
 
             TranslyteDbGateway = new TranslyteDbGateway(conn);
+
+            List<BookViewModel> items = new List<BookViewModel>();
+            items.Add(new BookViewModel()
+            {
+                Author = "android book",
+                Title = "android",
+                IsAvailable = true,
+                //Cover = Resource.Drawable.book1
+            });
+            items.Add(new BookViewModel()
+            {
+                Author = "book1",
+                Title = "book1 author",
+                IsAvailable = false,
+                //Cover = Resource.Drawable.book1
+            });
+            items.Add(new BookViewModel()
+            {
+                Author = "book2",
+                Title = "book2 author",
+                IsAvailable = false,
+                //Cover = Resource.Drawable.book2
+            });
+            items.Add(new BookViewModel()
+            {
+                Author = "book3",
+                Title = "book3 author",
+                IsAvailable = false,
+                //Cover = Resource.Drawable.book2
+            });
+            items.Add(new BookViewModel()
+            {
+                Author = "book4",
+                Title = "book4 author",
+                IsAvailable = true,
+                //Cover = Resource.Drawable.book2
+            });
+            GalleryAdapter adapter = new GalleryAdapter(this, items);
+
+            ListView listView = FindViewById<ListView>(Resource.Id.ListView);
+
+            listView.Adapter = adapter;
         }
        
     }

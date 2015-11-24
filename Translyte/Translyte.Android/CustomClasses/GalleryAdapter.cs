@@ -14,7 +14,7 @@ using Translyte.Core;
 using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 
-namespace WordSelection.Adapters
+namespace Translyte.Android.CustomClasses
 {
     class GalleryAdapter : BaseAdapter<BookViewModel>
     {

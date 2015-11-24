@@ -10,6 +10,7 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Droid.Platform;
 using Cirrious.MvvmCross.Droid.Views;
 using Java.Lang;
+using Translyte.Android.CustomClasses;
 
 namespace Translyte.Android.Views
 {
@@ -21,6 +22,9 @@ namespace Translyte.Android.Views
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.BookView);
+            TextView book = FindViewById<TextView>(Resource.Id.tv_book);
+            book.SetTextIsSelectable(true);
+            book.CustomSelectionActionModeCallback = new WordSelector(book);
         }
     }
 }
