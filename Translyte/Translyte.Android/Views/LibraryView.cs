@@ -36,38 +36,38 @@ namespace Translyte.Android.Views
             List<BookViewModel> items = new List<BookViewModel>();
             items.Add(new BookViewModel()
             {
-                Author = "android book",
-                Title = "android",
+                Title = "Ancient tales",
+                Author = "Ducan Long",
                 IsAvailable = true,
-                //Cover = Resource.Drawable.book1
+                Cover = Resource.Drawable.book1
             });
             items.Add(new BookViewModel()
             {
-                Author = "book1",
-                Title = "book1 author",
+                Title = "Responsive web design",
+                Author = "Ethan Macrotte",
                 IsAvailable = false,
-                //Cover = Resource.Drawable.book1
+                Cover = Resource.Drawable.book2
             });
             items.Add(new BookViewModel()
             {
-                Author = "book2",
-                Title = "book2 author",
+                Title = "Game of thrones",
+                Author = "George R.R.",
                 IsAvailable = false,
-                //Cover = Resource.Drawable.book2
+                Cover = Resource.Drawable.game
             });
             items.Add(new BookViewModel()
             {
-                Author = "book3",
-                Title = "book3 author",
+                Title = "Stephen King",
+                Author = "The dark tower",
                 IsAvailable = false,
-                //Cover = Resource.Drawable.book2
+                Cover = Resource.Drawable.dark
             });
             items.Add(new BookViewModel()
             {
-                Author = "book4",
-                Title = "book4 author",
+                Title = "The lord of the rings",
+                Author = "J.R.R. Tolkien",
                 IsAvailable = true,
-                //Cover = Resource.Drawable.book2
+                Cover = Resource.Drawable.lotr
             });
             GalleryAdapter adapter = new GalleryAdapter(this, items);
 
