@@ -74,7 +74,14 @@ namespace Translyte.Android.Views
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
 
             listView.Adapter = adapter;
+
+            ImageView image = FindViewById<ImageView>(Resource.Id.Cover);
+            image.Click += delegate
+            {
+                StartActivity(typeof(BookView));
+            };
         }
+
        
     }
 }
