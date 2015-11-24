@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cirrious.MvvmCross.ViewModels;
-using Parse;
 using Translyte.Core.Models;
 using Translyte.Core.Parse;
 
 namespace Translyte.Core.ViewModels
 {
-    class AuthenticationViewModel : MvxViewModel
+    class AuthenticationViewModel
     {
         private readonly ParseUser _currentUser;
         private string _password;

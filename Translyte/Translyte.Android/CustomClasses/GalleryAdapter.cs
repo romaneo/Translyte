@@ -10,7 +10,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Translyte.Android;
-using Translyte.Core;
 using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 

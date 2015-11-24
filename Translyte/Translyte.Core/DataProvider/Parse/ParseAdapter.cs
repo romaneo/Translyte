@@ -38,7 +38,7 @@ namespace Translyte.Core.Parse
             }
             catch (Exception)
             {
-                new ParseUser() { Username = userName, Password = userPasword }.SignUpAsync();
+                await new ParseUser() { Username = userName, Password = userPasword }.SignUpAsync();
             }
             
         }

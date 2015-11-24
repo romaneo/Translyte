@@ -6,9 +6,6 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid.Platform;
-using Cirrious.MvvmCross.Droid.Views;
 using Translyte.Android.CustomClasses;
 using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
@@ -17,8 +14,8 @@ using Environment = System.Environment;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "Library")]
-    public class LibraryView : MvxActivity
+    [Activity(Label = "Library", MainLauncher = true)]
+    public class LibraryView : Activity
     {
         public TranslyteDbGateway TranslyteDbGateway { get; set; }
         Connection conn;
@@ -69,12 +66,10 @@ namespace Translyte.Android.Views
                 IsAvailable = true,
                 Cover = Resource.Drawable.lotr
             });
+
             GalleryAdapter adapter = new GalleryAdapter(this, items);
-
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
-
             listView.Adapter = adapter;
-
             ImageView image = FindViewById<ImageView>(Resource.Id.Cover);
             image.Click += delegate
             {

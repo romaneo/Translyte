@@ -14,8 +14,7 @@
         android:inputType="textPersonName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/loginText"
-        local:MvxBind="Text UserName" />
+        android:id="@+id/loginText"/>
     <TextView
         android:text="Password"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -26,12 +25,10 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/passwordText"
-        local:MvxBind="Text Password" />
+        android:id="@+id/passwordText" />
     <Button
         android:text="Sign up/in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signUpButton"
-        local:MvxBind="Click SignInCommand" />
+        android:id="@+id/signUpButton" />
 </LinearLayout>

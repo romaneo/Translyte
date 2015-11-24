@@ -26,14 +26,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_title"
-                local:MvxBind="Text Title"
                 android:layout_gravity="center" />
             <TextView
                 android:text="Content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_book"
-                local:MvxBind="Text Content"
                 android:textIsSelectable="true" />
         </LinearLayout>
     </ScrollView>

@@ -1,21 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Widget;
-using Cirrious.CrossCore;
-using Cirrious.CrossCore.Droid.Platform;
-using Cirrious.MvvmCross.Droid.Views;
-using Java.Lang;
 using Translyte.Android.CustomClasses;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "DropBox")]
-    public class BookView : MvxActivity
+    [Activity(Label = "Book")]
+    public class BookView : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {

@@ -1,17 +1,14 @@
-﻿using Cirrious.MvvmCross.ViewModels;
-using Translyte.Core.Models;
+﻿using Translyte.Core.Models;
 using System;
-using Cirrious.MvvmCross.Plugins.File;
 
 namespace Translyte.Core.ViewModels
 {
-    public class BookViewModel 
-		: MvxViewModel
+    public class BookViewModel
     {
         public BookViewModel()
         {
-            //Path = "/sdcard/Oz.fb2";
-            Path = "/sdcard/translyte/gg.fb2";
+            Path = "/sdcard/Oz.fb2";
+            //Path = "/sdcard/translyte/gg.fb2";
             _book = new BookFullModel(Path);
             Book.Load(ref _book);
             _title = ((BookFullModel)_book).Chapters[1].Title;
@@ -27,7 +24,7 @@ namespace Translyte.Core.ViewModels
             set
             {
                 _title = value;
-                RaisePropertyChanged(() => Title);
+                //RaisePropertyChanged(() => Title);
             }
         }
         private string _content="Book's content";
@@ -35,7 +32,7 @@ namespace Translyte.Core.ViewModels
             get { return _content; } 
             set { 
                 _content = value; 
-                RaisePropertyChanged(()=>Content); 
+                //RaisePropertyChanged(()=>Content); 
             } 
         }
         public int Cover { get; set; }
