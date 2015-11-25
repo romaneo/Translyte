@@ -59,10 +59,7 @@ namespace Translyte.Android.CustomClasses
             title.Text = _items[position].Title;
 
             TextView author = row.FindViewById<TextView>(Resource.Id.Author);
-            author.Text = _items[position].Author;
-
-            CheckBox checkBox = row.FindViewById<CheckBox>(Resource.Id.IsAvailable);
-            checkBox.Checked = _items[position].IsAvailable;
+            author.Text = _items[position].Author;           
 
             return row;
         }

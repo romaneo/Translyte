@@ -37,11 +37,5 @@
                 android:id="@+id/Author"
                 android:paddingTop="10dp" />
         </LinearLayout>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="95"
-            android:paddingRight="10dp"
-            android:id="@+id/IsAvailable" />
     </LinearLayout>
 </LinearLayout>
