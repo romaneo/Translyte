@@ -3,51 +3,45 @@
     android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
-    <ScrollView
-        android:minWidth="100dp"
-        android:minHeight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ScrollView">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="50dp"
+            android:layout_height="140dp"
+            android:id="@+id/Cover"
+            android:layout_weight="35"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:descendantFocusability="blocksDescendants" />
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:weightSum="100">
-            <ImageView
-                android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="50dp"
-                android:layout_height="140dp"
-                android:id="@+id/Cover"
-                android:layout_weight="35"
-                android:padding="10dp"
-                android:scaleType="centerInside" />
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="75">
+            <TextView
+                android:text="Title"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/Title"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="25dp" />
+            <TextView
+                android:text="Author"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="75">
-                <TextView
-                    android:text="Title"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/Title"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="25dp" />
-                <TextView
-                    android:text="Author"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/Author"
-                    android:paddingTop="10dp" />
-            </LinearLayout>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="95"
-                android:paddingRight="10dp"
-                android:id="@+id/IsAvailable" />
+                android:id="@+id/Author"
+                android:paddingTop="10dp" />
         </LinearLayout>
-    </ScrollView>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="95"
+            android:paddingRight="10dp"
+            android:id="@+id/IsAvailable" />
+    </LinearLayout>
 </LinearLayout>
