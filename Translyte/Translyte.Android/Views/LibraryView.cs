@@ -6,6 +6,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using Newtonsoft.Json;
 using Translyte.Android.CustomClasses;
 using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
@@ -71,9 +72,14 @@ namespace Translyte.Android.Views
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
             ImageView image = FindViewById<ImageView>(Resource.Id.Cover);
+            var book = new BookViewModel();
+
             image.Click += delegate
             {
-                StartActivity(typeof(BookView));
+                var intent = new Intent(this, typeof(BookView));
+                string jsonModel = JsonConvert.SerializeObject(book);
+                intent.PutExtra("book", jsonModel);
+                StartActivity(intent);
             };
         }
 
