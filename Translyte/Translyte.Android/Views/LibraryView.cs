@@ -36,35 +36,30 @@ namespace Translyte.Android.Views
             {
                 Title = "Ancient tales",
                 Author = "Ducan Long",
-                IsAvailable = true,
                 Cover = Resource.Drawable.book1
             });
             items.Add(new BookViewModel()
             {
                 Title = "Responsive web design",
                 Author = "Ethan Macrotte",
-                IsAvailable = false,
                 Cover = Resource.Drawable.book2
             });
             items.Add(new BookViewModel()
             {
                 Title = "Game of thrones",
                 Author = "George R.R.",
-                IsAvailable = false,
                 Cover = Resource.Drawable.game
             });
             items.Add(new BookViewModel()
             {
                 Title = "Stephen King",
                 Author = "The dark tower",
-                IsAvailable = false,
                 Cover = Resource.Drawable.dark
             });
             items.Add(new BookViewModel()
             {
                 Title = "The lord of the rings",
                 Author = "J.R.R. Tolkien",
-                IsAvailable = true,
                 Cover = Resource.Drawable.lotr
             });
 
