@@ -20,6 +20,7 @@ namespace Translyte.Android.Views
     {
         public TranslyteDbGateway TranslyteDbGateway { get; set; }
         Connection conn;
+        private List<BookViewModel> _books; 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -31,41 +32,42 @@ namespace Translyte.Android.Views
 
             TranslyteDbGateway = new TranslyteDbGateway(conn);
 
-            List<BookViewModel> items = new List<BookViewModel>();
-            items.Add(new BookViewModel()
+            _books = new List<BookViewModel>();
+            _books.Add(new BookViewModel()
             {
                 Title = "Ancient tales",
                 Author = "Ducan Long",
                 Cover = Resource.Drawable.book1
             });
-            items.Add(new BookViewModel()
+            _books.Add(new BookViewModel()
             {
                 Title = "Responsive web design",
                 Author = "Ethan Macrotte",
                 Cover = Resource.Drawable.book2
             });
-            items.Add(new BookViewModel()
+            _books.Add(new BookViewModel()
             {
                 Title = "Game of thrones",
                 Author = "George R.R.",
                 Cover = Resource.Drawable.game
             });
-            items.Add(new BookViewModel()
+            _books.Add(new BookViewModel()
             {
                 Title = "Stephen King",
                 Author = "The dark tower",
                 Cover = Resource.Drawable.dark
             });
-            items.Add(new BookViewModel()
+            _books.Add(new BookViewModel()
             {
                 Title = "The lord of the rings",
                 Author = "J.R.R. Tolkien",
                 Cover = Resource.Drawable.lotr
             });
 
-            GalleryAdapter adapter = new GalleryAdapter(this, items);
+            GalleryAdapter adapter = new GalleryAdapter(this, _books);
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
+            listView.ItemClick += OnListItemClick; 
             ImageView image = FindViewById<ImageView>(Resource.Id.Cover);
             var book = new BookViewModel();
 
@@ -78,6 +80,13 @@ namespace Translyte.Android.Views
             };
         }
 
-       
+        void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var book = _books[e.Position];
+            var intent = new Intent(this, typeof(BookView));
+                string jsonModel = JsonConvert.SerializeObject(book);
+                intent.PutExtra("book", jsonModel);
+                StartActivity(intent);
+        }
     }
 }

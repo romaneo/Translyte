@@ -15,7 +15,8 @@
             android:id="@+id/Cover"
             android:layout_weight="35"
             android:padding="10dp"
-            android:scaleType="centerInside" />
+            android:scaleType="centerInside"
+            android:descendantFocusability="blocksDescendants" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
