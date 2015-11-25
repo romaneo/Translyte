@@ -7,6 +7,7 @@ using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.DataProvider.SQLiteBase;
 using Translyte.Core.Models;
 using Translyte.Core.Parse;
+using Translyte.Core.ViewModels;
 
 namespace Translyte.Core.DataProvider
 {
@@ -34,9 +35,20 @@ namespace Translyte.Core.DataProvider
             return _repository.GetBookLocal(id);
 		}
 
-        public IList<BookLocal> GetBooksLocal()
-		{
-            return new List<BookLocal>(_repository.GetBooksLocal());
+        public List<BookViewModel> GetBooksLocal()
+        {
+            var localBooks = _repository.GetBooksLocal().ToList();
+            //_repository.DeleteBookLocal(localBooks[0].ID);
+            var resBooks = new List<BookViewModel>();
+            foreach (var book in localBooks)
+            {
+                Book curBook = new BookReviewModel(book.BookPath);
+                curBook.BookPath = book.BookPath;
+                Book.Load(ref curBook);
+                var resBook = new BookViewModel() { Author = curBook.Author, Path = curBook.BookPath, Title = curBook.Title, Cover = curBook.Cover};
+                resBooks.Add(resBook);
+            }
+            return resBooks;
 		}
 
         public int SaveBookLocal(BookLocal item)

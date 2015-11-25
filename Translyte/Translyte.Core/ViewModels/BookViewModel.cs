@@ -7,12 +7,16 @@ namespace Translyte.Core.ViewModels
     {
         public BookViewModel()
         {
-            Path = "/sdcard/Oz.fb2";
-            //Path = "/sdcard/translyte/gg.fb2";
-            _book = new BookFullModel(Path);
-            Book.Load(ref _book);
-            _title = ((BookFullModel)_book).Chapters[1].Title;
-            _content = ((BookFullModel)_book).Chapters[1].Content;
+            //Path = "/sdcard/Oz.fb2";
+            if (Path != null)
+            {
+                Path = "/sdcard/translyte/gg.fb2";
+                _book = new BookFullModel(Path);
+                Book.Load(ref _book);
+            }
+            
+            //_title = ((BookFullModel)_book).Chapters[1].Title;
+            //_content = ((BookFullModel)_book).Chapters[1].Content;
         }
         
         private Book _book;
@@ -35,7 +39,7 @@ namespace Translyte.Core.ViewModels
                 //RaisePropertyChanged(()=>Content); 
             } 
         }
-        public int Cover { get; set; }
+        public string Cover { get; set; }
         public string Author { get; set; }
         public bool IsAvailable { get; set; }
     }
