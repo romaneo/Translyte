@@ -9,22 +9,23 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
 
 namespace Translyte.Android.CustomClasses
 {
-    class ParseGalleryAdapter : BaseAdapter<BookViewModel>
+    class ParseGalleryAdapter : BaseAdapter<BookReviewModel>
     {
-        private List<BookViewModel> _items;
+        private List<BookReviewModel> _items;
         private Context _context;
 
-        public ParseGalleryAdapter(Context context, List<BookViewModel> items)
+        public ParseGalleryAdapter(Context context, List<BookReviewModel> items)
         {
             _items = items;
             _context = context;
         }
 
-        public override BookViewModel this[int position]
+        public override BookReviewModel this[int position]
         {
             get { return _items[position]; }
         }
@@ -43,9 +44,6 @@ namespace Translyte.Android.CustomClasses
         {
             View row = convertView ?? LayoutInflater.From(_context).Inflate(Resource.Layout.BookItemView, null, false);
 
-            ImageView image = row.FindViewById<ImageView>(Resource.Id.Cover);
-            image.SetImageResource(_items[position].Cover);
-
             TextView title = row.FindViewById<TextView>(Resource.Id.Title);
             title.Text = _items[position].Title;
 
@@ -62,7 +60,7 @@ namespace Translyte.Android.CustomClasses
 
         public override int ViewTypeCount
         {
-            get { return this.Count; }
+            get { return 1; }
         }
     }
 }

@@ -85,10 +85,13 @@ namespace Translyte.Android
 			public const int Cover = 2131034117;
 			
 			// aapt resource value: 0x7f05000d
-			public const int ListView = 2131034125;
+			public const int IsAvailable = 2131034125;
 			
 			// aapt resource value: 0x7f05000c
-			public const int ScrollView = 2131034124;
+			public const int ListView = 2131034124;
+			
+			// aapt resource value: 0x7f05000e
+			public const int ScrollView = 2131034126;
 			
 			// aapt resource value: 0x7f050006
 			public const int Title = 2131034118;
@@ -146,7 +149,10 @@ namespace Translyte.Android
 			public const int LibraryView = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ParseLibraryView = 2130903044;
+			public const int ParseLibraryBookItemView = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int ParseLibraryView = 2130903045;
 			
 			static Layout()
 			{
