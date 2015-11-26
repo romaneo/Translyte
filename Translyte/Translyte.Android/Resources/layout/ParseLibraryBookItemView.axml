@@ -8,20 +8,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="100">
-        <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="50dp"
-            android:layout_height="140dp"
-            android:id="@+id/Cover"
-            android:layout_weight="35"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:descendantFocusability="blocksDescendants" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="75">
+            android:paddingLeft="15dp"
+            android:layout_weight="95">
             <TextView
                 android:text="Title"
                 android:layout_width="fill_parent"
@@ -37,5 +29,11 @@
                 android:id="@+id/Author"
                 android:paddingTop="10dp" />
         </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingRight="15dp"
+            android:id="@+id/IsAvailable" />
     </LinearLayout>
 </LinearLayout>

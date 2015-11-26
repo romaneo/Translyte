@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,18 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Translyte.Android;
 using Translyte.Core.ViewModels;
-using Object = Java.Lang.Object;
 
 namespace Translyte.Android.CustomClasses
 {
-    class GalleryAdapter : BaseAdapter<BookViewModel>
+    class ParseGalleryAdapter : BaseAdapter<BookViewModel>
     {
         private List<BookViewModel> _items;
         private Context _context;
 
-        public GalleryAdapter(Context context, List<BookViewModel> items)
+        public ParseGalleryAdapter(Context context, List<BookViewModel> items)
         {
             _items = items;
             _context = context;
@@ -52,7 +50,7 @@ namespace Translyte.Android.CustomClasses
             title.Text = _items[position].Title;
 
             TextView author = row.FindViewById<TextView>(Resource.Id.Author);
-            author.Text = _items[position].Author;      
+            author.Text = _items[position].Author;           
 
             return row;
         }

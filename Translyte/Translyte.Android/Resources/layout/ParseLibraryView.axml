@@ -7,9 +7,16 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
-        <ListView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/ListView" />
+        <ScrollView
+            android:minWidth="100dp"
+            android:minHeight="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ScrollView">
+            <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/ListView" />
+        </ScrollView>
     </LinearLayout>
 </FrameLayout>
