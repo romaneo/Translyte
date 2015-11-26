@@ -1,32 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Translyte.Android;
+using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 
 namespace Translyte.Android.CustomClasses
 {
-    class GalleryAdapter : BaseAdapter<BookViewModel>
+    class GalleryAdapter : BaseAdapter<BookReviewModel>
     {
-        private List<BookViewModel> _items;
+        private List<BookReviewModel> _items;
         private Context _context;
 
-        public GalleryAdapter(Context context, List<BookViewModel> items)
+        public GalleryAdapter(Context context, List<BookReviewModel> items)
         {
             _items = items;
             _context = context;
         }
 
-        public override BookViewModel this[int position]
+        public override BookReviewModel this[int position]
         {
             get { return _items[position]; }
         }
@@ -46,7 +49,12 @@ namespace Translyte.Android.CustomClasses
             View row = convertView ?? LayoutInflater.From(_context).Inflate(Resource.Layout.BookItemView, null, false);
 
             ImageView image = row.FindViewById<ImageView>(Resource.Id.Cover);
-            image.SetImageResource(_items[position].Cover);
+            if (_items[position].Cover != null)
+            {
+                var img = GetCover(_items[position].Cover);
+                image.SetImageBitmap(img);
+            }
+            
 
             TextView title = row.FindViewById<TextView>(Resource.Id.Title);
             title.Text = _items[position].Title;
@@ -57,6 +65,21 @@ namespace Translyte.Android.CustomClasses
             return row;
         }
 
+        private Bitmap GetCover(string imageText)
+        {
+            Byte[] bitmapData = Convert.FromBase64String(FixBase64ForImage(imageText));
+            var imageBitmap = BitmapFactory.DecodeByteArray(bitmapData, 0, bitmapData.Length);
+            return imageBitmap;
+        }
+
+
+        public string FixBase64ForImage(string Image)
+        {
+            System.Text.StringBuilder sbText = new System.Text.StringBuilder(Image, Image.Length);
+            sbText.Replace("\r\n", String.Empty); sbText.Replace(" ", String.Empty);
+            return sbText.ToString();
+        }
+
         public override int GetItemViewType(int position)
         {
             return position; //(position == this.Count - 1) ? 1 : 0;
@@ -64,7 +87,7 @@ namespace Translyte.Android.CustomClasses
 
         public override int ViewTypeCount
         {
-            get { return this.Count; }
+            get { return 1; }
         }
     }
 }

@@ -55,7 +55,6 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Statistic.cs" />
     <Compile Include="Translator.cs" />
-    <Compile Include="ViewModels\BookViewModel.cs" />
     <Compile Include="ViewModels\LibraryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

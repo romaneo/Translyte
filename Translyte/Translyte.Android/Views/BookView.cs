@@ -1,8 +1,11 @@
+using System.Threading;
 using Android.App;
 using Android.OS;
 using Android.Widget;
 using Newtonsoft.Json;
 using Translyte.Android.CustomClasses;
+using Translyte.Core;
+using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
 
 namespace Translyte.Android.Views
@@ -10,7 +13,7 @@ namespace Translyte.Android.Views
     [Activity(Label = "Book")]
     public class BookView : Activity
     {
-        public BookViewModel CurrentBook { get; set; }
+        public BookFullModel CurrentBook { get; set; }
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -23,9 +26,18 @@ namespace Translyte.Android.Views
             var extraData = Intent.GetStringExtra("book");
             if (extraData != null)
             {
-                CurrentBook = JsonConvert.DeserializeObject<BookViewModel>(extraData);
-                content.Text = CurrentBook.Content;
-                title.Text = CurrentBook.Title;
+
+                var tempBook = JsonConvert.DeserializeObject<BookReviewModel>(extraData);
+                title.Text = tempBook.Title;
+                RunOnUiThread(() => 
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    Book curBook = new BookFullModel(tempBook.BookPath);
+                    Book.Load(ref curBook);
+                    content.Text = ((BookFullModel)curBook).Chapters[0].Content;
+                });
+                
+                
             }
                 
             

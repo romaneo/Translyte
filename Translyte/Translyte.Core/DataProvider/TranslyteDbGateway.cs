@@ -7,6 +7,7 @@ using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.DataProvider.SQLiteBase;
 using Translyte.Core.Models;
 using Translyte.Core.Parse;
+using Translyte.Core.ViewModels;
 
 namespace Translyte.Core.DataProvider
 {
@@ -34,10 +35,22 @@ namespace Translyte.Core.DataProvider
             return _repository.GetBookLocal(id);
 		}
 
-        public IList<BookLocal> GetBooksLocal()
-		{
-            return new List<BookLocal>(_repository.GetBooksLocal());
+        public List<BookReviewModel> GetBooksLocalReview()
+        {
+            //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/Brodyagi_Dharmy.fb2", Position = 0 });
+            var localBooks = _repository.GetBooksLocal().ToList();
+            //_repository.DeleteBookLocal(localBooks[1].ID);
+            var resBooks = new List<BookReviewModel>();
+            foreach (var book in localBooks)
+            {
+                Book curBook = new BookReviewModel(book.BookPath);
+                curBook.BookPath = book.BookPath;
+                Book.Load(ref curBook);
+                resBooks.Add((BookReviewModel)curBook);
+            }
+            return resBooks;
 		}
+
 
         public int SaveBookLocal(BookLocal item)
 		{

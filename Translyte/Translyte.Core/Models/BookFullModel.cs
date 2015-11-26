@@ -7,7 +7,9 @@ namespace Translyte.Core.Models
 {
     public class BookFullModel : Book
     {
-        public BookFullModel(string bookPath) : base(bookPath) { }
+        public BookFullModel(string bookPath) : base(bookPath)
+        {
+        }
 
         public List<string> Genres { get; set; }
 
