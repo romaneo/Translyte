@@ -12,23 +12,24 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Translyte.Android;
+using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 
 namespace Translyte.Android.CustomClasses
 {
-    class GalleryAdapter : BaseAdapter<BookViewModel>
+    class GalleryAdapter : BaseAdapter<BookReviewModel>
     {
-        private List<BookViewModel> _items;
+        private List<BookReviewModel> _items;
         private Context _context;
 
-        public GalleryAdapter(Context context, List<BookViewModel> items)
+        public GalleryAdapter(Context context, List<BookReviewModel> items)
         {
             _items = items;
             _context = context;
         }
 
-        public override BookViewModel this[int position]
+        public override BookReviewModel this[int position]
         {
             get { return _items[position]; }
         }
@@ -86,7 +87,7 @@ namespace Translyte.Android.CustomClasses
 
         public override int ViewTypeCount
         {
-            get { return this.Count; }
+            get { return 1; }
         }
     }
 }
