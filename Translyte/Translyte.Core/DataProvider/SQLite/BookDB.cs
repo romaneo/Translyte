@@ -24,7 +24,7 @@ namespace Translyte.Core.DataProvider.SQLite
         {
             database = conn;
             // create the tables
-            var s = database.CreateTable<BookLocal>();
+            database.CreateTable<BookLocal>();
         }
 
         public IEnumerable<T> GetItems<T>() where T : IBusinessEntity, new()

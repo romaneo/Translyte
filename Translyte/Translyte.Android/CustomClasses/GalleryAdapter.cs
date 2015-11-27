@@ -12,6 +12,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Translyte.Android;
+using Translyte.Android.Helpers;
 using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
@@ -51,7 +52,7 @@ namespace Translyte.Android.CustomClasses
             ImageView image = row.FindViewById<ImageView>(Resource.Id.Cover);
             if (_items[position].Cover != null)
             {
-                var img = GetCover(_items[position].Cover);
+                var img = new BitmapConverteHelper().GetCover(_items[position].Cover);
                 image.SetImageBitmap(img);
             }
             
@@ -65,21 +66,7 @@ namespace Translyte.Android.CustomClasses
             return row;
         }
 
-        private Bitmap GetCover(string imageText)
-        {
-            Byte[] bitmapData = Convert.FromBase64String(FixBase64ForImage(imageText));
-            var imageBitmap = BitmapFactory.DecodeByteArray(bitmapData, 0, bitmapData.Length);
-            return imageBitmap;
-        }
-
-
-        public string FixBase64ForImage(string Image)
-        {
-            System.Text.StringBuilder sbText = new System.Text.StringBuilder(Image, Image.Length);
-            sbText.Replace("\r\n", String.Empty); sbText.Replace(" ", String.Empty);
-            return sbText.ToString();
-        }
-
+        
         public override int GetItemViewType(int position)
         {
             return position; //(position == this.Count - 1) ? 1 : 0;

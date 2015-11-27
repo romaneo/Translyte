@@ -14,10 +14,10 @@
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="60dp"
             android:layout_height="180dp"
-            android:id="@+id/Cover"
+            android:id="@+id/CoverCurrent"
             android:layout_weight="30"
             android:padding="10dp"
-            android:scaleType="fitXY" />
+            android:scaleType="centerInside" />
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
                 android:text="Title"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/Title"
+                android:id="@+id/TitleCurrent"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
                 android:textSize="30dp" />
@@ -35,21 +35,21 @@
                 android:text="Author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/Author"
+                android:id="@+id/AuthorCurrent"
                 android:paddingTop="10dp"
                 android:textSize="20dp" />
             <TextView
                 android:text="Progress: 34%"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/Author"
+                android:id="@+id/ProgressCurrent"
                 android:paddingTop="10dp"
                 android:textSize="14dp" />
             <TextView
                 android:text="Total time: 01:23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/Author"
+                android:id="@+id/TimeCurrent"
                 android:paddingTop="10dp"
                 android:textSize="14dp" />
         </LinearLayout>

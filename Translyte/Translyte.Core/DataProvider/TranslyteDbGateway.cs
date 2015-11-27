@@ -37,30 +37,67 @@ namespace Translyte.Core.DataProvider
 
         public List<BookReviewModel> GetBooksLocalReview()
         {
-            //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/Brodyagi_Dharmy.fb2", Position = 0 });
+            
             var localBooks = _repository.GetBooksLocal().ToList();
             //_repository.DeleteBookLocal(localBooks[1].ID);
             var resBooks = new List<BookReviewModel>();
             foreach (var book in localBooks)
             {
                 Book curBook = new BookReviewModel(book.BookPath);
-                curBook.BookPath = book.BookPath;
                 Book.Load(ref curBook);
                 resBooks.Add((BookReviewModel)curBook);
             }
             return resBooks;
 		}
 
+        public List<BookReviewModel> GetBooksLocalReviewWithoutCurrent()
+        {
+            //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/gg.fb2", Position = 0, IsCurrent = false });
+            //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/Brodyagi_Dharmy.fb2", Position = 0, IsCurrent = true });
+            var localBooks = _repository.GetBooksLocal().ToList();
+            var resBooks = new List<BookReviewModel>();
+            foreach (var book in localBooks)
+            {
+                if (!book.IsCurrent)
+                {
+                    Book curBook = new BookReviewModel(book.BookPath);
+                    Book.Load(ref curBook);
+                    resBooks.Add((BookReviewModel)curBook);
+                }
+                
+            }
+            return resBooks;
+        }
+
+        public BookReviewModel GetCurrentBook()
+        {
+            var localBook = _repository.GetCurrentBook();
+            Book curBook = new BookReviewModel();
+            if (localBook != null)
+            {
+                curBook.BookPath = localBook.BookPath;
+                Book.Load(ref curBook);
+            }
+            return (BookReviewModel)curBook;
+        }
 
         public int SaveBookLocal(BookLocal item)
 		{
             return _repository.SaveBookLocal(item);
 		}
 		
-		public int DeleteTask(int id)
+		public int DeleteBook(int id)
 		{
             return _repository.DeleteBookLocal(id);
 		}
+
+        public void SetCurrentBook(Book book)
+        {
+            //int id = 0;
+            //Int32.TryParse(book.ID, out id);
+            BookLocal local = new BookLocal() { BookPath = book.BookPath, Position = book.Position, IsCurrent = true};
+            _repository.SetCurrentBook(local);
+        }
         
     }
 }

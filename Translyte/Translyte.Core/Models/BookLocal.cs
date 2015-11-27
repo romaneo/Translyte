@@ -14,5 +14,6 @@ namespace Translyte.Core.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string BookPath { get; set; }
+        public bool IsCurrent { get; set; }
     }
 }

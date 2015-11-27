@@ -81,20 +81,35 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f050007
 			public const int Author = 2131034119;
 			
+			// aapt resource value: 0x7f05000e
+			public const int AuthorCurrent = 2131034126;
+			
 			// aapt resource value: 0x7f050005
 			public const int Cover = 2131034117;
 			
-			// aapt resource value: 0x7f05000d
-			public const int IsAvailable = 2131034125;
-			
 			// aapt resource value: 0x7f05000c
-			public const int ListView = 2131034124;
+			public const int CoverCurrent = 2131034124;
 			
-			// aapt resource value: 0x7f05000e
-			public const int ScrollView = 2131034126;
+			// aapt resource value: 0x7f050012
+			public const int IsAvailable = 2131034130;
+			
+			// aapt resource value: 0x7f050011
+			public const int ListView = 2131034129;
+			
+			// aapt resource value: 0x7f05000f
+			public const int ProgressCurrent = 2131034127;
+			
+			// aapt resource value: 0x7f050013
+			public const int ScrollView = 2131034131;
+			
+			// aapt resource value: 0x7f050010
+			public const int TimeCurrent = 2131034128;
 			
 			// aapt resource value: 0x7f050006
 			public const int Title = 2131034118;
+			
+			// aapt resource value: 0x7f05000d
+			public const int TitleCurrent = 2131034125;
 			
 			// aapt resource value: 0x7f050009
 			public const int ll_bookContent = 2131034121;

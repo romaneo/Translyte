@@ -42,5 +42,17 @@ namespace Translyte.Android.Views
                 
             
         }
+
+        //protected override void OnSaveInstanceState(Bundle outState)
+        //{
+        //    outState.PutInt("counter", c);
+        //    base.OnSaveInstanceState(outState);
+        //}
+        //protected override void OnRestoreInstanceState(Bundle savedState)
+        //{
+        //    base.OnRestoreSaveInstanceState(savedState);
+        //    var myString = savedState.GetString("myString”);
+        //    var myBool = GetBoolean("myBool”);
+        //}
     }
 }
