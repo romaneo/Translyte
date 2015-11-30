@@ -20,8 +20,9 @@ namespace Translyte.Android.CustomClasses
 {
     public class WordSelector : Java.Lang.Object, ActionMode.ICallback
     {
-        public WordSelector(TextView book)
+        public WordSelector (TextView book, Activity activity)
         {
+            ParentActivity = activity;
             this.book = book;
         }
 
@@ -29,12 +30,12 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
         {
-            switch (item.ItemId)
+            switch (item.ItemId) 
             {
                 case 0:
                     int min = 0;
                     int max = book.Text.Length;
-                    if (book.IsFocused)
+                    if (book.IsFocused) 
                     {
                         int selStart = book.SelectionStart;
                         int selEnd = book.SelectionEnd;
@@ -42,9 +43,10 @@ namespace Translyte.Android.CustomClasses
                         min = Math.Max(0, Math.Min(selStart, selEnd));
                         max = Math.Max(0, Math.Max(selStart, selEnd));
                     }
-                    var selectedText = book.Text.Substring(min, max - min);
-
-                    //TODO: translate
+                    // Perform your definition lookup with the selected text
+                    var selectedText = book.Text.Substring(min, max-min);
+                    Toast.MakeText(ParentActivity, selectedText, ToastLength.Short).Show();
+                    // Finish and close the ActionMode
                     mode.Finish();
                     return true;
                 default:
@@ -53,13 +55,15 @@ namespace Translyte.Android.CustomClasses
             return false;
         }
 
+        public Activity ParentActivity { get; set; }
+
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             // Called when action mode is first created. The menu supplied
-            // will be used to generate action buttons for the action mode
-
+            // will be used to generate action buttons for the action mode            
             // Here is an example MenuItem
-            menu.Add(1, 1, 0, "Definition").SetIcon(Resource.Drawable.Icon);
+            //ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
+            menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
             return true;
         }
 
@@ -69,14 +73,14 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
         {
-            // //Remove the "select all" option
+            //// Remove the "select all" option
             //menu.RemoveItem(Android.Resource.Id.SelectAll);
-            menu.RemoveGroup(0);
             //// Remove the "cut" option
             //menu.RemoveItem(Android.Resource.Id.Cut);
             //// Remove the "copy all" option
             //menu.RemoveItem(Android.Resource.Id.Copy);
             return true;
         }
+
     }
 }
