@@ -17,47 +17,13 @@ using Uri = Android.Net.Uri;
 
 namespace WordSelection
 {
-//{
-//    class MyNewCallBack: ActionMode.ICallback
-//    {
-
-//        public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public bool OnCreateActionMode(ActionMode mode, IMenu menu)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public void OnDestroyActionMode(ActionMode mode)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
-//        {
-//            throw new NotImplementedException();
-//        }
-
-//        public IntPtr Handle
-//        {
-//            get { throw new NotImplementedException(); }
-//        }
-
-//        public void Dispose()
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
 
     public class MySelectionCallBack : Java.Lang.Object, ActionMode.ICallback
     {
 
-
-        public MySelectionCallBack (TextView book)
+        public MySelectionCallBack (TextView book, Activity activity)
         {
+            ParentActivity = activity;
             this.book = book;
         }
 
@@ -80,6 +46,7 @@ namespace WordSelection
                     }
                     // Perform your definition lookup with the selected text
                     var selectedText = book.Text.Substring(min, max-min);
+                    Toast.MakeText(ParentActivity, selectedText, ToastLength.Short).Show();
                     // Finish and close the ActionMode
                     mode.Finish();
                     return true;
@@ -89,13 +56,15 @@ namespace WordSelection
             return false;
         }
 
+        public Activity ParentActivity { get; set; }
+
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             // Called when action mode is first created. The menu supplied
-            // will be used to generate action buttons for the action mode
-
+            // will be used to generate action buttons for the action mode            
             // Here is an example MenuItem
-            menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
+            ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
+            //menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
             return true;
         }
 

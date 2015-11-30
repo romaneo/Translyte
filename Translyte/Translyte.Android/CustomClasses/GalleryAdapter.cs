@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mime;
-using System.Text;
-
-using Android.App;
+﻿using System.Collections.Generic;
 using Android.Content;
-using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Translyte.Android;
 using Translyte.Android.Helpers;
 using Translyte.Core.Models;
-using Translyte.Core.ViewModels;
-using Object = Java.Lang.Object;
 
 namespace Translyte.Android.CustomClasses
 {

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+  <item android:id="@+id/addnew"    
+    android:title="Add New"
+    android:showAsAction="always"/>
+
+  <item android:id="@+id/searcher"
+        android:icon="@drawable/Library"
+        android:title="Search"
+        android:showAsAction="always"/>
+
+  <item android:id="@+id/refresher"
+    android:icon="@drawable/icon_profile"
+    android:title="Refresh"
+    android:showAsAction="always"/>
+
+</menu>
