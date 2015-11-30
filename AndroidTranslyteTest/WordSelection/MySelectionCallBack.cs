@@ -63,8 +63,8 @@ namespace WordSelection
             // Called when action mode is first created. The menu supplied
             // will be used to generate action buttons for the action mode            
             // Here is an example MenuItem
-            ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            //menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
+            //ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
+            menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
             return true;
         }
 
