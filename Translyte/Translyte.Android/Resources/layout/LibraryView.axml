@@ -86,6 +86,20 @@
                 android:id="@+id/AuthorCurrent"
                 android:paddingTop="10dp"
                 android:textSize="20dp" />
+            <TextView
+                android:text="Progress: 34%"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ProgressCurrent"
+                android:paddingTop="10dp"
+                android:textSize="14dp" />
+            <TextView
+                android:text="Total time: 01:23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/TimeCurrent"
+                android:paddingTop="10dp"
+                android:textSize="14dp" />
         </LinearLayout>
     </LinearLayout>
     <ListView

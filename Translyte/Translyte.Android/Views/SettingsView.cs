@@ -6,7 +6,6 @@ using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Preferences;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -25,24 +24,6 @@ namespace Translyte.Android.Views
          {
              //
              View parentView = inflater.Inflate(Resource.Layout.SettingsView, container, false);
-             var themeRadioButton = parentView.FindViewById<RadioButton>(Resource.Id.themeRadioButton);
-
-             themeRadioButton.Click += delegate
-             {
-                 ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-                 ISharedPreferencesEditor editor = prefs.Edit();
-                 editor.PutBoolean("themeDark", themeRadioButton.Checked);
-                 editor.Apply();
-             };
-             var fontRadioButton = parentView.FindViewById<RadioButton>(Resource.Id.fontRadioButton);
-
-             themeRadioButton.Click += delegate
-             {
-                 ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-                 ISharedPreferencesEditor editor = prefs.Edit();
-                 editor.PutBoolean("fontLarge", themeRadioButton.Checked);
-                 editor.Apply();
-             };
              return parentView;
          }
         public void OnClick(View v)

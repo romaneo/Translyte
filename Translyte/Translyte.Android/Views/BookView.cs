@@ -1,10 +1,6 @@
 using System.Threading;
 using Android.App;
-using Android.Content;
-using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.OS;
-using Android.Util;
 using Android.Widget;
 using Newtonsoft.Json;
 using Translyte.Android.CustomClasses;
@@ -28,7 +24,6 @@ namespace Translyte.Android.Views
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             //
-            
             View parentView = inflater.Inflate(Resource.Layout.BookView, container, false);
             LibraryView parentActivity = Activity as LibraryView;
             ParentActivity = parentActivity;
@@ -42,22 +37,9 @@ namespace Translyte.Android.Views
 
             parentView.FindViewById(Resource.Id.tv_book).Click += (s, e) => resideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left);
 
-            ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
-            var isDark = prefs.GetBoolean("themeDark", false);
-            if (isDark)
-            {
-                var layout = parentView.FindViewById<RelativeLayout>(Resource.Id.bookLayout);
-                layout.SetBackgroundColor(Color.DarkGray);
-                //var contentBook = parentView.FindViewById<TextView>(Resource.Id.tv_book);
-                content.SetTextColor(Color.WhiteSmoke);
-                title.SetTextColor(Color.WhiteSmoke);
-            }
-            var isLarge = prefs.GetBoolean("fontLarge", false);
-            if (isLarge)
-            {
-                content.SetTextSize(ComplexUnitType.Dip, 20);
-                title.SetTextSize(ComplexUnitType.Dip, 25);
-            }
+            // FrameLayout ignoredView = parentView.FindViewById<FrameLayout>(Resource.Id.ignored_view);
+            //  resideMenu.AddIgnoredView(ignoredView);
+            /// 
 
             //var extraData = parentActivity.Intent.GetStringExtra("book");
             string extraData = null;
