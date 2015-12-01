@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:color/white">
-    <TextView
-        android:text="Settings"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:height="300dp" />
-</RelativeLayout>
+    android:layout_gravity="fill_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RadioButton
+        android:text="Large font size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fontRadioButton"
+        android:textColor="@android:color/darker_gray" />
+    <RadioButton
+        android:text="Night theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/themeRadioButton"
+        android:textColor="@android:color/darker_gray" />
+</LinearLayout>

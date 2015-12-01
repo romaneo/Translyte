@@ -156,20 +156,18 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f060010
 			public const int CoverCurrent = 2131099664;
 			
-			// aapt resource value: 0x7f060016
-			public const int IsAvailable = 2131099670;
-			
 			// aapt resource value: 0x7f060015
 			public const int ListView = 2131099669;
 			
 			// aapt resource value: 0x7f060013
 			public const int ProgressCurrent = 2131099667;
-			
 			// aapt resource value: 0x7f060017
 			public const int ScrollView = 2131099671;
-			
 			// aapt resource value: 0x7f060014
 			public const int TimeCurrent = 2131099668;
+			
+			// aapt resource value: 0x7f050016
+			public const int ScrollView = 2131034134;
 			
 			// aapt resource value: 0x7f060006
 			public const int Title = 2131099654;
@@ -185,13 +183,15 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f06001e
 			public const int iv_icon = 2131099678;
+			public const int fontRadioButton = 2131034142;
 			
 			// aapt resource value: 0x7f060019
 			public const int iv_shadow = 2131099673;
+			// aapt resource value: 0x7f050017
+			public const int iv_background = 2131034135;
 			
 			// aapt resource value: 0x7f06001b
 			public const int layout_left_menu = 2131099675;
-			
 			// aapt resource value: 0x7f06001d
 			public const int layout_right_menu = 2131099677;
 			
@@ -200,6 +200,15 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f060009
 			public const int ll_bookContent = 2131099657;
+			
+			// aapt resource value: 0x7f05001c
+			public const int layout_right_menu = 2131034140;
+			
+			// aapt resource value: 0x7f05000e
+			public const int layout_top = 2131034126;
+			
+			// aapt resource value: 0x7f05000a
+			public const int ll_bookContent = 2131034122;
 			
 			// aapt resource value: 0x7f060001
 			public const int loginText = 2131099649;
@@ -236,6 +245,8 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f06000e
 			public const int title_bar_left_menu = 2131099662;
+			// aapt resource value: 0x7f05001f
+			public const int themeRadioButton = 2131034143;
 			
 			// aapt resource value: 0x7f06000f
 			public const int title_bar_right_menu = 2131099663;
@@ -245,6 +256,9 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f06000a
 			public const int tv_title = 2131099658;
+			
+			// aapt resource value: 0x7f05000b
+			public const int tv_title = 2131034123;
 			
 			static Id()
 			{
