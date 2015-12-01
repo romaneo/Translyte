@@ -164,10 +164,11 @@ namespace Translyte.Android.Views
             //{
             //    ChangeFragment(new CalendarFragment());
             //}
-            //else if (view == _itemSettings)
-            //{
-            //    ChangeFragment(new SettingsFragment());
-            //}
+            //else 
+            if (view == _itemSettings)
+            {
+                ChangeFragment(new SettingsView());
+            }
 
             ResideMenu.CloseMenu();
         }

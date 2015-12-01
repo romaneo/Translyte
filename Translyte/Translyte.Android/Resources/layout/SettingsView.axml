@@ -4,4 +4,11 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@android:color/white" />
+    android:background="@android:color/white">
+    <TextView
+        android:text="Settings"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:height="300dp" />
+</RelativeLayout>
