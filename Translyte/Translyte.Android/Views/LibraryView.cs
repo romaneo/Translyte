@@ -33,7 +33,7 @@ namespace Translyte.Android.Views
 
         public global::AndroidResideMenu.ResideMenu ResideMenu { get; private set; }
         private LibraryView _context;
-        private ResideMenuItem _itemHome;
+        private ResideMenuItem _itemLibrary;
         private ResideMenuItem _itemProfile;
         private ResideMenuItem _itemCalendar;
         private ResideMenuItem _itemSettings;
@@ -105,8 +105,6 @@ namespace Translyte.Android.Views
             }
         }
 
-        
-
         private void SetupMenu()
         {
             ResideMenu = new global::AndroidResideMenu.ResideMenu(this);
@@ -122,17 +120,17 @@ namespace Translyte.Android.Views
             ResideMenu.SetScaleValue(0.6F);
 
             // create menu items;
-            _itemHome = new ResideMenuItem(this, Resource.Drawable.Library, "Library");
+            _itemLibrary = new ResideMenuItem(this, Resource.Drawable.Library, "Library");
             _itemProfile = new ResideMenuItem(this, Resource.Drawable.icon_profile, "Profile");
             _itemCalendar = new ResideMenuItem(this, Resource.Drawable.Bookmarks, "Bookmark");
             _itemSettings = new ResideMenuItem(this, Resource.Drawable.icon_settings, "Settings");
 
-            _itemHome.SetOnClickListener(this);
+            _itemLibrary.SetOnClickListener(this);
             _itemProfile.SetOnClickListener(this);
             _itemCalendar.SetOnClickListener(this);
             _itemSettings.SetOnClickListener(this);
 
-            ResideMenu.AddMenuItem(_itemHome, global::AndroidResideMenu.ResideMenu.Direction.Left);
+            ResideMenu.AddMenuItem(_itemLibrary, global::AndroidResideMenu.ResideMenu.Direction.Left);
             ResideMenu.AddMenuItem(_itemProfile, global::AndroidResideMenu.ResideMenu.Direction.Left);
             ResideMenu.AddMenuItem(_itemCalendar, global::AndroidResideMenu.ResideMenu.Direction.Left);
             ResideMenu.AddMenuItem(_itemSettings, global::AndroidResideMenu.ResideMenu.Direction.Left);
@@ -152,10 +150,12 @@ namespace Translyte.Android.Views
 
         public void OnClick(View view)
         {
-            //if (view == _itemHome)
-            //{
-            //    ChangeFragment(new BookView());
-            //}
+            if (view == _itemLibrary)
+            {
+                //ChangeFragment(new BookView());
+                OnBackPressed();
+
+            }
             //else if (view == _itemProfile)
             //{
             //    ChangeFragment(new ProfileFragment());
