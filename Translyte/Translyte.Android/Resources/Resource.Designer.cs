@@ -57,73 +57,76 @@ namespace Translyte.Android
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int book1 = 2130837504;
+			public const int AppIcon = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int book2 = 2130837505;
+			public const int book1 = 2130837505;
 			
 			// aapt resource value: 0x7f020002
-			public const int Bookmarks = 2130837506;
+			public const int book2 = 2130837506;
 			
 			// aapt resource value: 0x7f020003
-			public const int button = 2130837507;
+			public const int Bookmarks = 2130837507;
 			
 			// aapt resource value: 0x7f020004
-			public const int button_on = 2130837508;
+			public const int button = 2130837508;
 			
 			// aapt resource value: 0x7f020005
-			public const int button_selector = 2130837509;
+			public const int button_on = 2130837509;
 			
 			// aapt resource value: 0x7f020006
-			public const int dark = 2130837510;
+			public const int button_selector = 2130837510;
 			
 			// aapt resource value: 0x7f020007
-			public const int frame = 2130837511;
+			public const int dark = 2130837511;
 			
 			// aapt resource value: 0x7f020008
-			public const int game = 2130837512;
+			public const int frame = 2130837512;
 			
 			// aapt resource value: 0x7f020009
-			public const int gesture = 2130837513;
+			public const int game = 2130837513;
 			
 			// aapt resource value: 0x7f02000a
-			public const int Icon = 2130837514;
+			public const int gesture = 2130837514;
 			
 			// aapt resource value: 0x7f02000b
-			public const int icon_home = 2130837515;
+			public const int Icon = 2130837515;
 			
 			// aapt resource value: 0x7f02000c
-			public const int icon_profile = 2130837516;
+			public const int icon_home = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public const int icon_settings = 2130837517;
+			public const int icon_profile = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
-			public const int Library = 2130837518;
+			public const int icon_settings = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int lotr = 2130837519;
+			public const int Library = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int menu_background = 2130837520;
+			public const int lotr = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int optionsmenu = 2130837521;
+			public const int menu_background = 2130837521;
 			
 			// aapt resource value: 0x7f020012
-			public const int shadow = 2130837522;
+			public const int optionsmenu = 2130837522;
 			
 			// aapt resource value: 0x7f020013
-			public const int splash = 2130837523;
+			public const int shadow = 2130837523;
 			
 			// aapt resource value: 0x7f020014
-			public const int title_bar_menu = 2130837524;
+			public const int splash = 2130837524;
 			
 			// aapt resource value: 0x7f020015
-			public const int title_bar_menu_on = 2130837525;
+			public const int title_bar_menu = 2130837525;
 			
 			// aapt resource value: 0x7f020016
-			public const int titlebar_menu_selector = 2130837526;
+			public const int title_bar_menu_on = 2130837526;
+			
+			// aapt resource value: 0x7f020017
+			public const int titlebar_menu_selector = 2130837527;
 			
 			static Drawable()
 			{

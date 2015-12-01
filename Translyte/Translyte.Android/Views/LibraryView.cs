@@ -22,7 +22,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "Library", MainLauncher = true, Theme = "@android:style/Theme.Light.NoTitleBar")]
+    [Activity(Label = "Translyte", MainLauncher = true, Theme = "@android:style/Theme.Light.NoTitleBar")]
     public class LibraryView : FragmentActivity, View.IOnClickListener
     {
         public override void OnBackPressed()
