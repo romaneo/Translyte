@@ -25,6 +25,12 @@ namespace Translyte.Android.Views
     [Activity(Label = "Library", MainLauncher = true, Theme = "@android:style/Theme.Light.NoTitleBar")]
     public class LibraryView : FragmentActivity, View.IOnClickListener
     {
+        public override void OnBackPressed()
+        {
+            UpdateView();
+            base.OnBackPressed();
+        }
+
         public global::AndroidResideMenu.ResideMenu ResideMenu { get; private set; }
         private LibraryView _context;
         private ResideMenuItem _itemHome;
@@ -99,6 +105,8 @@ namespace Translyte.Android.Views
             }
         }
 
+        
+
         private void SetupMenu()
         {
             ResideMenu = new global::AndroidResideMenu.ResideMenu(this);
@@ -167,9 +175,9 @@ namespace Translyte.Android.Views
         private void ChangeFragment(Fragment targetFragment)
         {
             ResideMenu.ClearIgnoredViewList();
-
+            
             SupportFragmentManager
-                    .BeginTransaction()
+                    .BeginTransaction().AddToBackStack(null)
                     .Replace(Resource.Id.main_fragment, targetFragment, "fragment")
                     .SetTransitionStyle(global::Android.Support.V4.App.FragmentTransaction.TransitFragmentFade)
                     .Commit();
