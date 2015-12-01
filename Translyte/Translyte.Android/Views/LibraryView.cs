@@ -22,7 +22,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "Library", MainLauncher = true, Theme = "@android:style/Theme.Light.NoTitleBar")]
+    [Activity(Label = "Translyte", Theme = "@android:style/Theme.Light.NoTitleBar")]
     public class LibraryView : FragmentActivity, View.IOnClickListener
     {
         public override void OnBackPressed()
@@ -152,9 +152,7 @@ namespace Translyte.Android.Views
         {
             if (view == _itemLibrary)
             {
-                //ChangeFragment(new BookView());
-                OnBackPressed();
-
+                UpdateView();
             }
             //else if (view == _itemProfile)
             //{

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Translyte.Android" android:versionCode="1" android:versionName="1.0" android:installLocation="auto">
 	<uses-sdk />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<application android:label="Translyte.Android" android:icon="@drawable/Icon" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
-    <activity android:name="com.dropbox.sync.android.DbxAuthActivity" />
+	<application android:label="Translyte" android:icon="@drawable/AppIcon" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+		<activity android:name="com.dropbox.sync.android.DbxAuthActivity" />
 		<activity android:name="com.dropbox.client2.android.AuthActivity" android:launchMode="singleTask">
 			<intent-filter>
 				<data android:scheme="db-goenzzov1epvl88" />
