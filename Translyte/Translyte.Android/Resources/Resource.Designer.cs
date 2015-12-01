@@ -147,95 +147,86 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f060007
 			public const int Author = 2131099655;
 			
-			// aapt resource value: 0x7f060012
-			public const int AuthorCurrent = 2131099666;
+			// aapt resource value: 0x7f060013
+			public const int AuthorCurrent = 2131099667;
 			
 			// aapt resource value: 0x7f060005
 			public const int Cover = 2131099653;
 			
-			// aapt resource value: 0x7f060010
-			public const int CoverCurrent = 2131099664;
+			// aapt resource value: 0x7f060011
+			public const int CoverCurrent = 2131099665;
 			
 			// aapt resource value: 0x7f060015
-			public const int ListView = 2131099669;
+			public const int IsAvailable = 2131099669;
 			
-			// aapt resource value: 0x7f060013
-			public const int ProgressCurrent = 2131099667;
-			// aapt resource value: 0x7f060017
-			public const int ScrollView = 2131099671;
 			// aapt resource value: 0x7f060014
-			public const int TimeCurrent = 2131099668;
+			public const int ListView = 2131099668;
 			
-			// aapt resource value: 0x7f050016
-			public const int ScrollView = 2131034134;
+			// aapt resource value: 0x7f060016
+			public const int ScrollView = 2131099670;
 			
 			// aapt resource value: 0x7f060006
 			public const int Title = 2131099654;
 			
-			// aapt resource value: 0x7f060011
-			public const int TitleCurrent = 2131099665;
+			// aapt resource value: 0x7f060012
+			public const int TitleCurrent = 2131099666;
 			
-			// aapt resource value: 0x7f06001f
-			public const int addnew = 2131099679;
+			// aapt resource value: 0x7f060020
+			public const int addnew = 2131099680;
 			
-			// aapt resource value: 0x7f060018
-			public const int iv_background = 2131099672;
+			// aapt resource value: 0x7f060008
+			public const int bookLayout = 2131099656;
 			
 			// aapt resource value: 0x7f06001e
-			public const int iv_icon = 2131099678;
-			public const int fontRadioButton = 2131034142;
+			public const int fontRadioButton = 2131099678;
 			
-			// aapt resource value: 0x7f060019
-			public const int iv_shadow = 2131099673;
-			// aapt resource value: 0x7f050017
-			public const int iv_background = 2131034135;
+			// aapt resource value: 0x7f060017
+			public const int iv_background = 2131099671;
 			
-			// aapt resource value: 0x7f06001b
-			public const int layout_left_menu = 2131099675;
 			// aapt resource value: 0x7f06001d
-			public const int layout_right_menu = 2131099677;
+			public const int iv_icon = 2131099677;
 			
-			// aapt resource value: 0x7f06000d
-			public const int layout_top = 2131099661;
+			// aapt resource value: 0x7f060018
+			public const int iv_shadow = 2131099672;
 			
-			// aapt resource value: 0x7f060009
-			public const int ll_bookContent = 2131099657;
+			// aapt resource value: 0x7f06001a
+			public const int layout_left_menu = 2131099674;
 			
-			// aapt resource value: 0x7f05001c
-			public const int layout_right_menu = 2131034140;
+			// aapt resource value: 0x7f06001c
+			public const int layout_right_menu = 2131099676;
 			
-			// aapt resource value: 0x7f05000e
-			public const int layout_top = 2131034126;
+			// aapt resource value: 0x7f06000e
+			public const int layout_top = 2131099662;
 			
-			// aapt resource value: 0x7f05000a
-			public const int ll_bookContent = 2131034122;
+			// aapt resource value: 0x7f06000a
+			public const int ll_bookContent = 2131099658;
 			
 			// aapt resource value: 0x7f060001
 			public const int loginText = 2131099649;
 			
-			// aapt resource value: 0x7f06000c
-			public const int main_fragment = 2131099660;
+			// aapt resource value: 0x7f06000d
+			public const int main_fragment = 2131099661;
 			
 			// aapt resource value: 0x7f060003
 			public const int passwordText = 2131099651;
 			
-			// aapt resource value: 0x7f060021
-			public const int refresher = 2131099681;
+			// aapt resource value: 0x7f060022
+			public const int refresher = 2131099682;
 			
-			// aapt resource value: 0x7f060020
-			public const int searcher = 2131099680;
+			// aapt resource value: 0x7f060021
+			public const int searcher = 2131099681;
 			
 			// aapt resource value: 0x7f060004
 			public const int signUpButton = 2131099652;
 			
-			// aapt resource value: 0x7f060008
-			public const int sv_bookContent = 2131099656;
+			// aapt resource value: 0x7f060009
+			public const int sv_bookContent = 2131099657;
 			
-			// aapt resource value: 0x7f06001a
-			public const int sv_left_menu = 2131099674;
+			// aapt resource value: 0x7f060019
+			public const int sv_left_menu = 2131099673;
 			
-			// aapt resource value: 0x7f06001c
-			public const int sv_right_menu = 2131099676;
+			// aapt resource value: 0x7f06001b
+			public const int sv_right_menu = 2131099675;
 			
 			// aapt resource value: 0x7f060002
 			public const int textView2 = 2131099650;
@@ -243,22 +234,20 @@ namespace Translyte.Android
 			// aapt resource value: 0x7f060000
 			public const int textView3 = 2131099648;
 			
-			// aapt resource value: 0x7f06000e
-			public const int title_bar_left_menu = 2131099662;
-			// aapt resource value: 0x7f05001f
-			public const int themeRadioButton = 2131034143;
+			// aapt resource value: 0x7f06001f
+			public const int themeRadioButton = 2131099679;
 			
 			// aapt resource value: 0x7f06000f
-			public const int title_bar_right_menu = 2131099663;
+			public const int title_bar_left_menu = 2131099663;
+			
+			// aapt resource value: 0x7f060010
+			public const int title_bar_right_menu = 2131099664;
+			
+			// aapt resource value: 0x7f06000c
+			public const int tv_book = 2131099660;
 			
 			// aapt resource value: 0x7f06000b
-			public const int tv_book = 2131099659;
-			
-			// aapt resource value: 0x7f06000a
-			public const int tv_title = 2131099658;
-			
-			// aapt resource value: 0x7f05000b
-			public const int tv_title = 2131034123;
+			public const int tv_title = 2131099659;
 			
 			static Id()
 			{
