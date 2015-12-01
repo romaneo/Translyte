@@ -22,7 +22,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Translyte.Android.Views
 {
-    [Activity(Label = "Library", MainLauncher = true)]
+    [Activity(Label = "Library", MainLauncher = true, Theme = "@android:style/Theme.Light.NoTitleBar")]
     public class LibraryView : FragmentActivity, View.IOnClickListener
     {
         public global::AndroidResideMenu.ResideMenu ResideMenu { get; private set; }
@@ -44,8 +44,8 @@ namespace Translyte.Android.Views
             SetContentView(Resource.Layout.LibraryView);
             _context = this;
             SetupMenu();
-            if (bundle == null)
-                ChangeFragment(new BookView());
+            //if (bundle == null)
+            //    ChangeFragment(new BookView());
 
             var sqliteFilename = "TaskDB.db3";
             string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -81,12 +81,15 @@ namespace Translyte.Android.Views
                 }
                 image.Click += delegate
                 {
-                    var intent = new Intent(this, typeof(BookView));
+                    //var intent = new Intent(this, typeof(BookView));
                     string jsonModel = JsonConvert.SerializeObject(CurrentBook);
-                    intent.PutExtra("book", jsonModel);
+                    //intent.PutExtra("book", jsonModel);
                     //StartActivity(intent);
-                    ChangeFragment(new BookView());
-
+                    var fragment = new BookView();
+                    Bundle bundle2 = new Bundle();
+                    bundle2.PutString("book", jsonModel);
+                    fragment.Arguments = bundle2;
+                    ChangeFragment(fragment);
                 };
                 TextView title = FindViewById<TextView>(Resource.Id.TitleCurrent);
                 title.Text = CurrentBook.Title;
@@ -94,7 +97,6 @@ namespace Translyte.Android.Views
                 TextView author = FindViewById<TextView>(Resource.Id.AuthorCurrent);
                 author.Text = CurrentBook.Author;
             }
-            
         }
 
         private void SetupMenu()
@@ -144,7 +146,7 @@ namespace Translyte.Android.Views
         {
             //if (view == _itemHome)
             //{
-            //    ChangeFragment(new HomeFragment());
+            //    ChangeFragment(new BookView());
             //}
             //else if (view == _itemProfile)
             //{
@@ -202,11 +204,10 @@ namespace Translyte.Android.Views
             //curBook.BookPath = book.BookPath;
             Book.Load(ref curBook);
             //Book res = (BookReviewModel) curBook;
-            var intent = new Intent(this, typeof(BookView));
+            //var intent = new Intent(this, typeof(BookView));
                 string jsonModel = JsonConvert.SerializeObject(book);
-                intent.PutExtra("book", jsonModel);
+               // intent.PutExtra("book", jsonModel);
                 //StartActivity(intent);
-                //StartActivityFromFragment(global::Android.App.Fragment.Instantiate(this,"BookView.cs"), intent, 0);
                 var fragment = new BookView();
                 Bundle bundle = new Bundle();
                 bundle.PutString("book", jsonModel);
@@ -218,9 +219,6 @@ namespace Translyte.Android.Views
                 CurrentBook = (BookReviewModel)curBook;
                 _books.Clear();
                 _books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
-
-                
-
             }
         }
 

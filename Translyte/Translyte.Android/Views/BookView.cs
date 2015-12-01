@@ -23,17 +23,14 @@ namespace Translyte.Android.Views
         public BookFullModel CurrentBook { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            ///
-            var parentView = inflater.Inflate(Resource.Layout.BookView, container, false);
+            //
+            View parentView = inflater.Inflate(Resource.Layout.BookView, container, false);
             LibraryView parentActivity = Activity as LibraryView;
             ParentActivity = parentActivity;
             HasOptionsMenu = true;
             var resideMenu = parentActivity.ResideMenu;
 
-            title is null!!!!!!!
-
-
-            var title = parentActivity.FindViewById<TextView>(Resource.Id.tv_title);
+            var title = parentView.FindViewById<TextView>(Resource.Id.tv_title);
             TextView content = parentView.FindViewById<TextView>(Resource.Id.tv_book);
             content.SetTextIsSelectable(true);
             content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity);
@@ -44,16 +41,15 @@ namespace Translyte.Android.Views
             //  resideMenu.AddIgnoredView(ignoredView);
             /// 
 
-            
             //var extraData = parentActivity.Intent.GetStringExtra("book");
             string extraData = null;
-            if (Arguments !=null)
+            if (Arguments != null)
                 extraData = Arguments.GetString("book");
             if (extraData != null)
             {
                 var tempBook = JsonConvert.DeserializeObject<BookReviewModel>(extraData);
                 title.Text = tempBook.Title;
-                parentActivity.RunOnUiThread(() => 
+                parentActivity.RunOnUiThread(() =>
                 {
                     Thread.CurrentThread.IsBackground = true;
                     Book curBook = new BookFullModel(tempBook.BookPath);
@@ -83,8 +79,8 @@ namespace Translyte.Android.Views
 
             //var subMenu2Item = subMenu2.Item;
             //subMenu2Item.SetIcon(Resource.Drawable.Library);
-            // ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            inflater.Inflate(Resource.Drawable.optionsmenu, menu);
+             ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
+            //inflater.Inflate(Resource.Drawable.optionsmenu, menu);
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
