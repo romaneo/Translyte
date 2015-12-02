@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Core", "Translyte.Core\Translyte.Core.csproj", "{1D173630-871F-4965-90BC-5B41E9B76487}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Android", "Translyte.Android\Translyte.Android.csproj", "{A267BCFC-4AAC-4533-BF7D-1742A4B2578D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Console.TestApp", "Translyte.Console.TestApp\Translyte.Console.TestApp.csproj", "{D66E31F1-75C6-4E47-B216-4EE6C5931E78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Test", "Translyte.Test\Translyte.Test.csproj", "{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,12 @@ Global
 		{A267BCFC-4AAC-4533-BF7D-1742A4B2578D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A267BCFC-4AAC-4533-BF7D-1742A4B2578D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A267BCFC-4AAC-4533-BF7D-1742A4B2578D}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{D66E31F1-75C6-4E47-B216-4EE6C5931E78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D66E31F1-75C6-4E47-B216-4EE6C5931E78}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D66E31F1-75C6-4E47-B216-4EE6C5931E78}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D66E31F1-75C6-4E47-B216-4EE6C5931E78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

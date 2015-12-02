@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Net;
+using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -12,98 +11,58 @@ namespace Translyte.Core
 {
     public class Translator
     {
-        public Translator(string langFrom = "en", string langTo = "ru", uint num = 3) {
+        public Translator(string langFrom, string langTo) {
             LanguageFrom = langFrom;
             LanguageTo = langTo;
-            TranslationsNum = num;
         }
+
         public string LanguageFrom { get; set; }
         public string LanguageTo { get; set; }
-        public uint TranslationsNum { get; set; }
+        //TODO: public uint TranslationsNum { get; set; }
 
         private const string CLIENT_ID = "tra_nsl_yte";
         private const string CLIENT_SECRET = "fe5d271ommfz25BEPQCLORQtLWg1/eItEoXn5dv9B6M=";
-        private const string ACEESS_URI = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
-        private HttpWebResponse response;
-       
-
-        public string Translate(string text)
-        {
-            string uri = "http://api.microsofttranslator.com/v2/Http.svc/GetTranslations?text=" + 
-                text + 
-                "&from=" + LanguageFrom + 
-                "&to=" + LanguageTo + 
-                "&maxTranslations=" + TranslationsNum;
-
-            return GetTranslations(uri);
-            
-        }
-
-        private string GetTranslations(string url)
-        {
-            // Create an HTTP web request using the URL:
-            var token = GetAccessToken();
-            var authToken = "Bearer " + token.access_token;
-
-            var request = HttpWebRequest.Create(url);
-            request.Headers["Authorization"] = authToken;
-            request.ContentType = "text/xml";
-            request.Method = "POST";
-
-            string res = "";
-            request.BeginGetResponse(new AsyncCallback(FinishWebRequest), request);
-            // Get a stream representation of the HTTP web response:
-            using (Stream stream = response.GetResponseStream())
-            {
-                res = new StreamReader(stream).ReadToEnd();
-                XDocument doc = XDocument.Parse(@res);
-                XNamespace ns = "http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2";
-                int i = 1;
-                res="";
-                foreach (XElement xe in doc.Descendants(ns + "TranslationMatch"))
-                {
-                    res += string.Format("{0}Result {1}", Environment.NewLine, i++);
-                    foreach (var node in xe.Elements())
-                    {
-                        res += string.Format("{0} = {1}", node.Name.LocalName, node.Value);
-                    }
-                }
-            }
-            return res;
-        }
-
-        private void FinishWebRequest(IAsyncResult result)
-        {
-            response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
-        }
-
-        Stream outputStream;
-        private AdmAccessToken GetAccessToken()
-        {
-            var tokRequest = string.Format("grant_type=client_credentials&client_id={0}&client_secret={1}&scope=http://api.microsofttranslator.com", CLIENT_ID, CLIENT_SECRET);
-            //Prepare OAuth request 
-            var webRequest = WebRequest.Create(ACEESS_URI);
-            webRequest.ContentType = "application/x-www-form-urlencoded";
-            webRequest.Method = "POST";
-            byte[] bytes = Encoding.Unicode.GetBytes(tokRequest);
-            webRequest.BeginGetRequestStream(new AsyncCallback(FinishStreamRequest),webRequest);
-            
-            outputStream.Write(bytes, 0, bytes.Length);
-
-            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(AdmAccessToken));
-            //Get deserialized object from JSON stream
-            AdmAccessToken token = (AdmAccessToken)serializer.ReadObject(response.GetResponseStream());
-            return token;
-        }
-
-        private void FinishStreamRequest(IAsyncResult result)
-        {
- 	        outputStream = (result.AsyncState as HttpWebRequest).EndGetRequestStream(result) as Stream;
-        }
+        private const string ACCESS_URI = "https://datamarket.accesscontrol.windows.net/v2/OAuth2-13";
         
-
+        //This function takes a text and returns its translation on predefined language.
+        public async Task<string> Translate(string text)
+        {
+            AccessToken token = await GetAccessToken();
+            var authToken = "Bearer " + token.access_token;
+            string request = "http://api.microsofttranslator.com/v2/Http.svc/Translate?text=" + 
+                        text + 
+                        "&from=" + LanguageFrom +
+                        "&to=" + LanguageTo;
+            using(var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Authorization", authToken);
+                var result = await client.GetAsync(request);
+                var xmlString = await result.Content.ReadAsStringAsync();
+                var xdoc = XDocument.Parse(xmlString);
+                return xdoc.Root.Value;
+            }
+        }
+        //This function gets access token to send translation request.
+        private async Task<AccessToken> GetAccessToken()
+        {
+            using(var client = new HttpClient())
+            {
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("grant_type", "client_credentials"),
+                    new KeyValuePair<string, string>("client_id", CLIENT_ID),
+                    new KeyValuePair<string, string>("client_secret", CLIENT_SECRET),
+                    new KeyValuePair<string, string>("scope", "http://api.microsofttranslator.com")
+                });
+                var result = await client.PostAsync(ACCESS_URI, content);
+                var serializer = new DataContractJsonSerializer(typeof(AccessToken));
+                Stream stream = await result.Content.ReadAsStreamAsync();
+                return (AccessToken)serializer.ReadObject(stream);
+            }
+        }
+        //Data structure of access token.
         [DataContract]
-        public class AdmAccessToken
+        private class AccessToken
         {
             [DataMember]
             public string access_token { get; set; }
