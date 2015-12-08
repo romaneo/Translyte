@@ -152,7 +152,7 @@ namespace Translyte.Android.Views
         {
             if (view == _itemLibrary)
             {
-                UpdateView();
+                OnBackPressed();
             }
             //else if (view == _itemProfile)
             //{
