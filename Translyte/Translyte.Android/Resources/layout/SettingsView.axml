@@ -3,19 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     android:orientation="vertical"
-    android:layout_gravity="fill_horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RadioButton
-        android:text="Large font size"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fontRadioButton"
-        android:textColor="@android:color/darker_gray" />
-    <RadioButton
-        android:text="Night theme"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/themeRadioButton"
-        android:textColor="@android:color/darker_gray" />
+    android:layout_gravity="fill_vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="fill">
+    <LinearLayout
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_gravity="fill_vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="fill">
+        <RadioButton
+            android:text="Large font size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fontRadioButton"
+            android:textColor="@android:color/darker_gray" />
+        <RadioButton
+            android:text="Night theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/themeRadioButton"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+    <TextView
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:id="@+id/testtw" />
 </LinearLayout>
