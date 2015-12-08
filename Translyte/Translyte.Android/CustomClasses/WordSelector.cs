@@ -1,20 +1,7 @@
 ﻿using Android.App;
-using Android.Content;
-using Android.Graphics;
-using Android.Net;
-using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Java.IO;
-using Java.Lang;
-using Java.Util;
-
-using System;
-using Android;
-using String = System.String;
-using File = Java.IO.File;
 using Math = System.Math;
-using Uri = Android.Net.Uri;
 
 namespace Translyte.Android.CustomClasses
 {
@@ -32,7 +19,7 @@ namespace Translyte.Android.CustomClasses
         {
             switch (item.ItemId) 
             {
-                case 0:
+                case Resource.Id.translate:
                     int min = 0;
                     int max = book.Text.Length;
                     if (book.IsFocused) 
@@ -59,11 +46,8 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
-            // Called when action mode is first created. The menu supplied
-            // will be used to generate action buttons for the action mode            
-            // Here is an example MenuItem
-            //ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            menu.Add(0, 0, 0, "Definition").SetIcon(Resource.Drawable.Icon);
+           ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);            
+            //menu.Add(0, 0, 0, "Translate").SetIcon(Resource.Drawable.translate);
             return true;
         }
 
@@ -73,12 +57,9 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
         {
-            //// Remove the "select all" option
-            //menu.RemoveItem(Android.Resource.Id.SelectAll);
-            //// Remove the "cut" option
-            //menu.RemoveItem(Android.Resource.Id.Cut);
-            //// Remove the "copy all" option
-            //menu.RemoveItem(Android.Resource.Id.Copy);
+            menu.RemoveItem(Resource.Id.SelectAll);//16908319);
+            //menu.RemoveItem(Resource.Id.Cut);//17039363);
+            //menu.RemoveItem(Resource.Id.Copy);//16908321);
             return true;
         }
 

@@ -97,7 +97,7 @@ namespace Translyte.Android.Views
 
             //var subMenu2Item = subMenu2.Item;
             //subMenu2Item.SetIcon(Resource.Drawable.Library);
-             ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
+             //ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
             //inflater.Inflate(Resource.Drawable.optionsmenu, menu);
             base.OnCreateOptionsMenu(menu, inflater);
         }
