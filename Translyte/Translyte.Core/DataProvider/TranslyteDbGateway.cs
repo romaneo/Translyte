@@ -52,6 +52,12 @@ namespace Translyte.Core.DataProvider
 
         public List<BookReviewModel> GetBooksLocalReviewWithoutCurrent()
         {
+            //var s = GetBooksLocalReview();
+            //foreach (var t in s)
+            //{
+            //    _repository.DeleteBookLocal(Int32.Parse(t.ID));
+            //}
+           
             //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/gg.fb2", Position = 0, IsCurrent = false });
             //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/Brodyagi_Dharmy.fb2", Position = 0, IsCurrent = true });
             var localBooks = _repository.GetBooksLocal().ToList();
