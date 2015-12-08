@@ -57,7 +57,7 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
         {
-            menu.RemoveItem(Resource.Id.SelectAll);//16908319);
+            menu.RemoveItem(16908319);//Resource.Id.SelectAll);
             //menu.RemoveItem(Resource.Id.Cut);//17039363);
             //menu.RemoveItem(Resource.Id.Copy);//16908321);
             return true;
