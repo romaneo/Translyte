@@ -41,8 +41,8 @@ namespace Translyte.Android.CustomClasses
                         max = Math.Max(0, Math.Max(selStart, selEnd));
                     }
                     var selectedText = book.Text.Substring(min, max - min);
-                    var tr = new Translator("en", "ua");
-                    var res = tr.Translate(selectedText).Result;
+                    var tr = new Translator("en", "ru");
+				    var res = tr.Translate(selectedText).GetAwaiter().GetResult();
                     Toast.MakeText(ParentActivity, res, ToastLength.Short).Show();
                     // Finish and close the ActionMode
                     mode.Finish();

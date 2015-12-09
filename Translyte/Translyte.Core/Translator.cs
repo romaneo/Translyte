@@ -36,7 +36,7 @@ namespace Translyte.Core
             using(var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", authToken);
-                var result = await client.GetAsync(request);
+				var result = client.GetAsync(request).GetAwaiter().GetResult();
                 var xmlString = await result.Content.ReadAsStringAsync();
                 var xdoc = XDocument.Parse(xmlString);
                 return xdoc.Root.Value;
@@ -54,9 +54,9 @@ namespace Translyte.Core
                     new KeyValuePair<string, string>("client_secret", CLIENT_SECRET),
                     new KeyValuePair<string, string>("scope", "http://api.microsofttranslator.com")
                 });
-                var result = await client.PostAsync(ACCESS_URI, content);
+				var result = client.PostAsync(ACCESS_URI, content).GetAwaiter().GetResult();
                 var serializer = new DataContractJsonSerializer(typeof(AccessToken));
-                Stream stream = await result.Content.ReadAsStreamAsync();
+				Stream stream = result.Content.ReadAsStreamAsync().GetAwaiter().GetResult();
                 return (AccessToken)serializer.ReadObject(stream);
             }
         }
