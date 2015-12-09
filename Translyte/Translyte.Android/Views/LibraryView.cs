@@ -52,7 +52,7 @@ namespace Translyte.Android.Views
             _context = this;
             SetupMenu();
 
-			Java.IO.File 	dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte3");
+			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
 			if (!dir.Exists ())
 				dir.Mkdirs ();
 
