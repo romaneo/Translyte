@@ -1,28 +1,38 @@
-﻿using Android.App;
+﻿using System.Threading.Tasks;
+using Android.App;
 using Android.Views;
 using Android.Widget;
+using Translyte.Core;
 using Math = System.Math;
 
 namespace Translyte.Android.CustomClasses
 {
     public class WordSelector : Java.Lang.Object, ActionMode.ICallback
     {
-        public WordSelector (TextView book, Activity activity)
+        public WordSelector(TextView book, Activity activity)
         {
             ParentActivity = activity;
             this.book = book;
         }
 
         private TextView book;
+        private string _transWord;
+        private bool _isTrans = false;
+        private async void Translate(string text)
+        {
+            var tr = new Translator("en", "ua");
+            _transWord = await tr.Translate(text);
+            _isTrans = true;
 
+        }
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
         {
-            switch (item.ItemId) 
+            switch (item.ItemId)
             {
                 case Resource.Id.translate:
                     int min = 0;
                     int max = book.Text.Length;
-                    if (book.IsFocused) 
+                    if (book.IsFocused)
                     {
                         int selStart = book.SelectionStart;
                         int selEnd = book.SelectionEnd;
@@ -30,9 +40,10 @@ namespace Translyte.Android.CustomClasses
                         min = Math.Max(0, Math.Min(selStart, selEnd));
                         max = Math.Max(0, Math.Max(selStart, selEnd));
                     }
-                    // Perform your definition lookup with the selected text
-                    var selectedText = book.Text.Substring(min, max-min);
-                    Toast.MakeText(ParentActivity, selectedText, ToastLength.Short).Show();
+                    var selectedText = book.Text.Substring(min, max - min);
+                    var tr = new Translator("en", "ua");
+                    var res = tr.Translate(selectedText).Result;
+                    Toast.MakeText(ParentActivity, res, ToastLength.Short).Show();
                     // Finish and close the ActionMode
                     mode.Finish();
                     return true;
@@ -46,7 +57,7 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
-           ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);            
+            ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
             //menu.Add(0, 0, 0, "Translate").SetIcon(Resource.Drawable.translate);
             return true;
         }
