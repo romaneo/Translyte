@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using Translyte.Core.DataProvider;
+using Translyte.Core.DataProvider.SQLite;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -13,6 +14,8 @@ using Android.Views;
 using Android.Widget;
 using Translyte.Android.CustomClasses;
 using Translyte.Android.Helpers;
+using Translyte.Core.Models;
+using Environment = System.Environment;
 
 namespace Translyte.Android.Views
 {
@@ -22,11 +25,19 @@ namespace Translyte.Android.Views
         private FileListAdapter _adapter;
         private DirectoryInfo _directory;
 
+		public TranslyteDbGateway TranslyteDbGateway { get; set; }
+		Connection conn;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             _adapter = new FileListAdapter(Activity, new FileSystemInfo[0]);
             ListAdapter = _adapter;
+			var sqliteFilename = "TaskDB.db3";
+			string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			var path = Path.Combine(libraryPath, sqliteFilename);
+			conn = new Connection(path);
+			TranslyteDbGateway = new TranslyteDbGateway(conn);
         }
 
         public override void OnListItemClick(ListView l, View v, int position, long id)
@@ -37,7 +48,13 @@ namespace Translyte.Android.Views
             {
                 // Do something with the file.  In this case we just pop some toast.
                 Log.Verbose("FileListFragment", "The file {0} was clicked.", fileSystemInfo.FullName);
-                Toast.MakeText(Activity, "You selected file " + fileSystemInfo.FullName, ToastLength.Short).Show();
+				Toast.MakeText(Activity, "You selected file " + fileSystemInfo.Extension, ToastLength.Short).Show();
+				if (fileSystemInfo.Extension.Equals(".fb2"))
+				{
+					var curBook = new BookReviewModel(fileSystemInfo.FullName);	
+					TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = fileSystemInfo.FullName, Position = 0, IsCurrent = true });
+					TranslyteDbGateway.SetCurrentBook(curBook);
+				}
             }
             else
             {

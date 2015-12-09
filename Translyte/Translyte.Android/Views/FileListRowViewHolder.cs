@@ -32,6 +32,7 @@ namespace Translyte.Android.Views
         public void Update(string fileName, int fileImageResourceId)
         {
             TextView.Text = fileName;
+			if (fileImageResourceId!=0)
             ImageView.SetImageResource(fileImageResourceId);
         }
     }

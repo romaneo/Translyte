@@ -76,7 +76,7 @@ namespace Translyte.Android.CustomClasses
                 row = convertView;
                 viewHolder = (FileListRowViewHolder)row.Tag;
             }
-            //viewHolder.Update(fileSystemEntry.Name, fileSystemEntry.IsDirectory() ? Resource.Drawable.folder : Resource.Drawable.file);
+            viewHolder.Update(fileSystemEntry.Name, fileSystemEntry.IsDirectory() ? Resource.Drawable.folder : Resource.Drawable.file);
 
             return row;
         }

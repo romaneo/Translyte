@@ -104,6 +104,8 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\FileListItemView.axml" />
     <AndroidResource Include="Resources\layout\FileBrowserView.axml" />
+    <AndroidResource Include="Resources\drawable\file.png" />
+    <AndroidResource Include="Resources\drawable\folder.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
