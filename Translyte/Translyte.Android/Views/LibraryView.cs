@@ -167,7 +167,9 @@ namespace Translyte.Android.Views
             if (view == _itemLibrary)
             {
                 OnBackPressed();
-				//UpdateView();
+				_books.Clear();
+				_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
+				UpdateView();
             }
             //else if (view == _itemProfile)
             //{

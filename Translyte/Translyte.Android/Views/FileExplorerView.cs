@@ -31,13 +31,14 @@ namespace Translyte.Android.Views
 		private FileExplorerAdapter adapter;
 		public TranslyteDbGateway TranslyteDbGateway { get; set; }
 		Connection conn;
+		View ParentView { get; set; }
 
 		List<BookReviewModel> _books = new List<BookReviewModel>();
 
 		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View parentView = inflater.Inflate(Resource.Layout.FileExplorerView, container, false);
-
+			ParentView = parentView;
 			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
 			var s = dir.ListFiles ();
 
@@ -73,6 +74,22 @@ namespace Translyte.Android.Views
 				TranslyteDbGateway.SaveBookLocal (new BookLocal () { BookPath = book.BookPath, Position = 0, IsCurrent = true });
 				TranslyteDbGateway.SetCurrentBook (book);
 				Toast.MakeText(this.Activity, "Loading...", ToastLength.Short).Show();
+
+				Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
+				var s = dir.ListFiles ();
+
+				_books = new List<BookReviewModel> ();
+				var localBooks = TranslyteDbGateway.GetBooksLocalReview ();
+				foreach(var t in s)
+				{
+					var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(t.AbsolutePath));
+					_books.Add (new BookReviewModel(){BookPath = t.AbsolutePath, IsLocal = isLocal, Title = t.Name});
+				}
+
+				adapter = new FileExplorerAdapter(ParentView.Context, _books);
+				ListView listView = ParentView.FindViewById<ListView>(Resource.Id.FilesListView);
+				listView.Adapter = adapter;
+				listView.ItemClick += OnListItemClick;
 				/*this.FragmentManager
 					.BeginTransaction().AddToBackStack(null)
 					.Replace(Resource.Id.main_fragment, new BookView(), "fragment")
