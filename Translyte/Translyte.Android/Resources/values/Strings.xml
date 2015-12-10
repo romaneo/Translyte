@@ -12,10 +12,10 @@
     <item>22</item>
   </string-array>
   <string-array name="font_array">
-    <item>a1</item>
-    <item>a2</item>
-    <item>a3</item>
-    <item>a4</item>
-    <item>a5</item>
+    <item>Times New Roman</item>
+    <item>Arial</item>
+    <item>Calibri</item>
+    <item>Comic Sans MS</item>
+    <item>Verdana</item>
   </string-array>
 </resources>
