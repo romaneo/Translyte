@@ -14,18 +14,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="fill">
-        <RadioButton
-            android:text="Large font size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/fontRadioButton"
-            android:textColor="@android:color/darker_gray" />
-        <RadioButton
-            android:text="Night theme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/themeRadioButton"
-            android:textColor="@android:color/darker_gray" />
         <Switch
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

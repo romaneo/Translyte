@@ -232,4 +232,19 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\Translyte.Core\Translyte.Core.csproj">
+      <Project>{1D173630-871F-4965-90BC-5B41E9B76487}</Project>
+      <Name>Translyte.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\fonts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\arial.ttf" />
+    <AndroidAsset Include="Assets\fonts\BodoniFLF-Roman.ttf" />
+    <AndroidAsset Include="Assets\fonts\Raleway-Medium.ttf" />
+    <AndroidAsset Include="Assets\fonts\airstrike.ttf" />
+  </ItemGroup>
 </Project>

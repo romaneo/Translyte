@@ -52,12 +52,32 @@ namespace Translyte.Android.Views
                 content.SetTextColor(Color.WhiteSmoke);
                 title.SetTextColor(Color.WhiteSmoke);
             }
-            var isLarge = prefs.GetBoolean("fontLarge", false);
-            if (isLarge)
-            {
-                content.SetTextSize(ComplexUnitType.Dip, 20);
-                title.SetTextSize(ComplexUnitType.Dip, 25);
-            }
+			var size = prefs.GetInt("textSize", 20);
+			content.SetTextSize(ComplexUnitType.Dip, size);
+			title.SetTextSize(ComplexUnitType.Dip, size + 5);
+
+			var textFont = prefs.GetString("textFont", "Arial");
+			//if (isLarge)
+			//{
+			var res="";
+			switch(textFont)
+			{
+			case "Arial":
+				res = "arial";
+				break;
+			case "Verdana":
+				res = "airstrike";
+				break;
+			case "Calibri":
+				res = "BodoniFLF-Roman";
+				break;
+			default :
+				res = "Raleway-Medium";
+				break;
+			}
+			Typeface tf = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/" + res + ".ttf");
+			content.Typeface = tf;
+			title.SetTextSize(ComplexUnitType.Dip, 25);
 
             //var extraData = parentActivity.Intent.GetStringExtra("book");
             string extraData = null;
