@@ -17,6 +17,7 @@ using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.Models;
 using Translyte.Core.ViewModels;
+using EnvironmentAnd = Android.OS.Environment;
 using Environment = System.Environment;
 using Fragment = Android.Support.V4.App.Fragment;
 
@@ -50,6 +51,11 @@ namespace Translyte.Android.Views
             SetContentView(Resource.Layout.LibraryView);
             _context = this;
             SetupMenu();
+
+			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
+			if (!dir.Exists ())
+				dir.Mkdirs ();
+
             //if (bundle == null)
             //    ChangeFragment(new BookView());
 
