@@ -42,6 +42,17 @@ namespace Translyte.Android.Views
                 editor.PutBoolean("fontLarge", themeRadioButton.Checked);
                 editor.Apply();
             };
+
+            Spinner textSizeSpinner = parentView.FindViewById<Spinner>(Resource.Id.textSize);
+            var adapter1 = ArrayAdapter.CreateFromResource(Activity.BaseContext, Resource.Array.size_array, Resource.Layout.Spinner);//global::Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            adapter1.SetDropDownViewResource(global::Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            textSizeSpinner.Adapter = adapter1;
+
+            Spinner textFontSpinner = parentView.FindViewById<Spinner>(Resource.Id.textFont);
+            var adapter2 = ArrayAdapter.CreateFromResource(Activity.BaseContext, Resource.Array.font_array, Resource.Layout.Spinner);//global::Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            adapter2.SetDropDownViewResource(global::Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            textFontSpinner.Adapter = adapter2;
+
             return parentView;
         }
         public void OnClick(View v)
