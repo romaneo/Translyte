@@ -135,7 +135,7 @@ namespace Translyte.Android.Views
 
             // create menu items;
             _itemLibrary = new ResideMenuItem(this, Resource.Drawable.Library, "Library");
-            _itemProfile = new ResideMenuItem(this, Resource.Drawable.icon_profile, "Profile");
+            _itemProfile = new ResideMenuItem(this, Resource.Drawable.icon_profile, "Load books");
             _itemCalendar = new ResideMenuItem(this, Resource.Drawable.Bookmarks, "Bookmark");
             _itemSettings = new ResideMenuItem(this, Resource.Drawable.icon_settings, "Settings");
 
