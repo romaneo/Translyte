@@ -26,6 +26,65 @@
             android:layout_height="wrap_content"
             android:id="@+id/themeRadioButton"
             android:textColor="@android:color/darker_gray" />
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/themeSwitch"
+            android:padding="10dp"
+            android:textSize="22sp"
+            android:text="Book night theme" />
+        <Switch
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appThemeSwitch"
+            android:padding="10dp"
+            android:paddingTop="15dp"
+            android:textSize="22sp"
+            android:text="Application night theme" />
+        <LinearLayout
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/layout1">
+            <TextView
+                android:text="Text size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:textSize="22sp"
+                android:id="@+id/textView1" />
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textSize"
+                android:paddingLeft="30dp"
+                android:textSize="22sp"
+                android:prompt="@string/textSizes" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:id="@+id/layout11">
+            <TextView
+                android:text="Text font"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="30dp"
+                android:textSize="22sp"
+                android:id="@+id/textView2" />
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textFont"
+                android:paddingLeft="30dp"
+                android:textSize="22sp"
+                android:prompt="@string/textFonts" />
+        </LinearLayout>
     </LinearLayout>
     <TextView
         android:orientation="vertical"
