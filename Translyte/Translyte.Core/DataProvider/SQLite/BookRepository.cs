@@ -43,6 +43,13 @@ namespace Translyte.Core.DataProvider.SQLite
             return db.DeleteItem<BookLocal>(id);
         }
 
+		public void DeleteAllBooks()
+		{
+			var books = GetBooksLocal ();
+			foreach(var book in books)
+				db.DeleteItem<BookLocal>(book.ID);
+		}
+
         public void SetCurrentBook(BookLocal book)
         {
             var books = GetBooksLocal().ToList();

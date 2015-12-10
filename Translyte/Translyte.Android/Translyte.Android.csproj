@@ -89,6 +89,8 @@
     </Compile>
     <Compile Include="Views\SettingsView.cs" />
     <Compile Include="Views\SplashActivity.cs" />
+    <Compile Include="Views\FileExplorerView.cs" />
+    <Compile Include="CustomClasses\FileExplorerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -113,6 +115,8 @@
     <AndroidResource Include="Resources\layout\FileBrowserView.axml" />
     <AndroidResource Include="Resources\drawable\file.png" />
     <AndroidResource Include="Resources\drawable\folder.png" />
+    <AndroidResource Include="Resources\layout\FileExplorerView.axml" />
+    <AndroidResource Include="Resources\drawable\fileSave.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -127,7 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Translyte.Core\Translyte.Core.csproj">
-      <Project>{1d173630-871f-4965-90bc-5b41e9b76487}</Project>
+      <Project>{1D173630-871F-4965-90BC-5B41E9B76487}</Project>
       <Name>Translyte.Core</Name>
     </ProjectReference>
   </ItemGroup>

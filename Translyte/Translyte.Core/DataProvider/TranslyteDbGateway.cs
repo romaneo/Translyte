@@ -97,6 +97,12 @@ namespace Translyte.Core.DataProvider
             return _repository.DeleteBookLocal(id);
 		}
 
+		public void DeleteAllBooks()
+		{
+			_repository.DeleteAllBooks();
+		}
+
+
         public void SetCurrentBook(Book book)
         {
             //int id = 0;

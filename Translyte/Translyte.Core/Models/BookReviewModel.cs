@@ -11,5 +11,6 @@ namespace Translyte.Core.Models
 
         public BookReviewModel() : base("") { }
 
+		public bool IsLocal { get; set; }
     }
 }
