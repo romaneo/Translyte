@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Translyte.Android.CustomClasses;
 using Translyte.Core;
 using Translyte.Core.Models;
+//using Fragment = Android.Support.V4.App.Fragment;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Views;
 
@@ -27,8 +28,6 @@ namespace Translyte.Android.Views
         public BookFullModel CurrentBook { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            //
-            
             View parentView = inflater.Inflate(Resource.Layout.BookView, container, false);
             LibraryView parentActivity = Activity as LibraryView;
             ParentActivity = parentActivity;
@@ -48,7 +47,6 @@ namespace Translyte.Android.Views
             {
                 var layout = parentView.FindViewById<RelativeLayout>(Resource.Id.bookLayout);
                 layout.SetBackgroundColor(Color.DarkGray);
-                //var contentBook = parentView.FindViewById<TextView>(Resource.Id.tv_book);
                 content.SetTextColor(Color.WhiteSmoke);
                 title.SetTextColor(Color.WhiteSmoke);
             }
@@ -98,39 +96,6 @@ namespace Translyte.Android.Views
             return parentView;
         }
 
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            //var subMenu1 = menu.AddSubMenu("Action Item");
-            //subMenu1.Add("Sample");
-            //subMenu1.Add("Menu");
-            //subMenu1.Add("Items");
-
-            //var subMenu1Item = subMenu1.Item;
-            //subMenu1Item.SetIcon(Resource.Drawable.icon_home);
-            //subMenu1Item.SetShowAsAction(ShowAsAction.Always|ShowAsAction.WithText);
-
-            //var subMenu2 = menu.AddSubMenu("Overflow Item");
-            //subMenu2.Add("These");
-            //subMenu2.Add("Are");
-            //subMenu2.Add("Sample");
-            //subMenu2.Add("Items");
-
-            //var subMenu2Item = subMenu2.Item;
-            //subMenu2Item.SetIcon(Resource.Drawable.Library);
-             //ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            //inflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            base.OnCreateOptionsMenu(menu, inflater);
-        }
-
-        public override void OnDestroyOptionsMenu()
-        {
-            //TextView text = ParentActivity.FindViewById<TextView>(Resource.Id.rmt);
-            //int start = text.SelectionStart;
-            //int ent = text.SelectionEnd;
-            //string tx = text.Text.Substring(start, ent - start);
-            //Toast.MakeText(ParentActivity, "blabla", ToastLength.Short).Show();
-            base.OnDestroyOptionsMenu();
-        }
 
         //protected override void OnSaveInstanceState(Bundle outState)
         //{

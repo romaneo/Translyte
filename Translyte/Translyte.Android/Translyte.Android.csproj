@@ -91,6 +91,7 @@
     <Compile Include="Views\SplashActivity.cs" />
     <Compile Include="Views\FileExplorerView.cs" />
     <Compile Include="CustomClasses\FileExplorerAdapter.cs" />
+    <Compile Include="Views\TranslateMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -115,8 +116,12 @@
     <AndroidResource Include="Resources\layout\FileBrowserView.axml" />
     <AndroidResource Include="Resources\drawable\file.png" />
     <AndroidResource Include="Resources\drawable\folder.png" />
-    <AndroidResource Include="Resources\layout\FileExplorerView.axml" />
     <AndroidResource Include="Resources\drawable\fileSave.png" />
+    <AndroidResource Include="Resources\layout\LibraryBookItemView.axml" />
+    <AndroidResource Include="Resources\layout\FileExplorerView.axml" />
+    <AndroidResource Include="Resources\layout\TranslateMessage.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -217,7 +222,9 @@
     <AndroidResource Include="Resources\drawable\Note.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Spinner.xml" />
+    <AndroidResource Include="Resources\layout\Spinner.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
@@ -238,9 +245,7 @@
       <Name>Translyte.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\fonts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\arial.ttf" />
     <AndroidAsset Include="Assets\fonts\BodoniFLF-Roman.ttf" />

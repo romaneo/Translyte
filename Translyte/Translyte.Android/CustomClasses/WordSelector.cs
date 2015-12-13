@@ -2,6 +2,7 @@
 using Android.App;
 using Android.Views;
 using Android.Widget;
+using Translyte.Android.Views;
 using Translyte.Core;
 using Math = System.Math;
 
@@ -45,19 +46,31 @@ namespace Translyte.Android.CustomClasses
                     {
                         var tr = new Translator("en", "ru");
                         var res = tr.Translate(selectedText).GetAwaiter().GetResult();
-                        Toast.MakeText(ParentActivity, res, ToastLength.Short).Show();
+                    //    Toast.MakeText(ParentActivity, res, ToastLength.Short).Show();
+                        ShowEditDialog(selectedText, res);
                     }
                     catch (System.Exception)
                     {                        
                         Toast.MakeText(ParentActivity, "Missing internet connection", ToastLength.Short).Show();
                     }
                     // Finish and close the ActionMode
+                    
                     mode.Finish();
                     return true;
                 default:
                     break;
             }
             return false;
+        }
+
+        private void ShowEditDialog(string orign, string translate)
+        {
+            var fm = ParentActivity.FragmentManager.BeginTransaction();
+            TranslateMessage editNameDialog = new TranslateMessage();
+            editNameDialog.Original = orign;
+            editNameDialog.Translation = translate;
+
+            editNameDialog.Show(fm, "TranslateMessage");
         }
 
         public Activity ParentActivity { get; set; }
@@ -75,7 +88,7 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
         {
-            menu.RemoveItem(16908319);//Resource.Id.SelectAll);
+            menu.RemoveItem(global::Android.Resource.Id.SelectAll);//Resource.Id.SelectAll);
             //menu.RemoveItem(Resource.Id.Cut);//17039363);
             //menu.RemoveItem(Resource.Id.Copy);//16908321);
             return true;
