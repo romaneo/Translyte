@@ -161,6 +161,7 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f060014
 			public const int ListView = 2131099668;
+			
 			// aapt resource value: 0x7f060016
 			public const int ScrollView = 2131099670;
 			
@@ -190,10 +191,13 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f06001a
 			public const int layout_left_menu = 2131099674;
+			
 			// aapt resource value: 0x7f06001c
 			public const int layout_right_menu = 2131099676;
+			
 			// aapt resource value: 0x7f06000e
 			public const int layout_top = 2131099662;
+			
 			// aapt resource value: 0x7f06000a
 			public const int ll_bookContent = 2131099658;
 			
@@ -208,6 +212,7 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f060022
 			public const int refresher = 2131099682;
+			
 			// aapt resource value: 0x7f060021
 			public const int searcher = 2131099681;
 			
@@ -216,8 +221,10 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f060009
 			public const int sv_bookContent = 2131099657;
+			
 			// aapt resource value: 0x7f060019
 			public const int sv_left_menu = 2131099673;
+			
 			// aapt resource value: 0x7f06001b
 			public const int sv_right_menu = 2131099675;
 			
@@ -238,6 +245,7 @@ namespace Translyte.Android
 			
 			// aapt resource value: 0x7f06000c
 			public const int tv_book = 2131099660;
+			
 			// aapt resource value: 0x7f06000b
 			public const int tv_title = 2131099659;
 			

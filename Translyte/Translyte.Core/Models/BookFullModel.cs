@@ -5,11 +5,12 @@ using System.Text;
 
 namespace Translyte.Core.Models
 {
+    //This class represents full book model that contains
+    //additional information and book content.
     public class BookFullModel : Book
     {
-        public BookFullModel(string bookPath) : base(bookPath)
-        {
-        }
+        public BookFullModel(string bookPath) 
+            : base(bookPath) {}
 
         public List<string> Genres { get; set; }
 

@@ -9,6 +9,9 @@ using System.Xml.Linq;
 
 namespace Translyte.Core
 {
+    //This class represents a translate module.
+    //It provides functionality to translate text using
+    //Microsoft Translator APIs.
     public class Translator
     {
         public Translator(string langFrom, string langTo) {
@@ -43,7 +46,7 @@ namespace Translyte.Core
             }
         }
         //This function gets access token to send translation request.
-        private async Task<AccessToken> GetAccessToken()
+        public async Task<AccessToken> GetAccessToken()
         {
             using(var client = new HttpClient())
             {
@@ -62,7 +65,7 @@ namespace Translyte.Core
         }
         //Data structure of access token.
         [DataContract]
-        private class AccessToken
+        public class AccessToken
         {
             [DataMember]
             public string access_token { get; set; }

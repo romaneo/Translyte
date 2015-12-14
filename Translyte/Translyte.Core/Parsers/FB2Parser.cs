@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 using Translyte.Core.Models;
 
 namespace Translyte.Core.Parsers
 {
+    //This class implements IParser interface and provides ability to 
+    //read books of fb2 type.
     public class FB2Parser : IParser
     {
-
+        //This function converts an FB2 book to book type Book. 
+        //It can be either just book info or full book with content.
         public void Parse(ref Book book)
         {
             var xdoc = XDocument.Load(book.BookPath);
@@ -51,16 +52,17 @@ namespace Translyte.Core.Parsers
                     Content = GetFormattedString(x.Elements())
                 }));
         }
-
+        //This function checks if tag contains another tag by name.
         private bool Has(string tagName, XElement tag)
         {
             return tag.Elements().Select(x => x.Name.LocalName).Contains(tagName);
         }
+        //This function checks if tags contain tag by name.
         private bool Has(string tagName, IEnumerable<XElement> tags)
         {
             return tags.Select(x => x.Name.LocalName).Contains(tagName);
         }
-
+        //This function add string formatting by xml tags.
         private string GetFormattedString(IEnumerable<XElement> elements)
         {
             string res = "";
@@ -85,6 +87,7 @@ namespace Translyte.Core.Parsers
             }
             return res;
         }
+        //This function returns language name by given code name.
         private string GetLanguage(string langCode)
         {
             switch (langCode)
@@ -145,6 +148,7 @@ namespace Translyte.Core.Parsers
                 default: return "Not set";
             }
         }
+        //This function returns genre name by genre code.
         private string GetGenre(string genreCode)
         {
             switch (genreCode)
