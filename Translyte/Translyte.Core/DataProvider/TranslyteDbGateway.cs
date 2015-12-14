@@ -7,7 +7,6 @@ using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.DataProvider.SQLiteBase;
 using Translyte.Core.Models;
 using Translyte.Core.Parse;
-using Translyte.Core.ViewModels;
 
 namespace Translyte.Core.DataProvider
 {

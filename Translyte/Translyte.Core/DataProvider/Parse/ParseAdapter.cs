@@ -12,8 +12,10 @@ using Translyte.Core.Models;
 
 namespace Translyte.Core.Parse
 {
+	// Adapter to use Parse API
     public class ParseAdapter
     {
+		// Parse generated app keys
         private const string AppId = "5iwX6JgTYmHJcwUsbbbtJYy0sRf8OOns8CLdMcqz";
         private const string DotNetKey = "6MeGivIrAf2tvIUhTXLeIJ9ShwrUKgtPxAoUai4g";
 

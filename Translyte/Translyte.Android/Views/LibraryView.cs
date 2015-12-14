@@ -58,24 +58,6 @@ namespace Translyte.Android.Views
             var path = Path.Combine(libraryPath, sqliteFilename);
             conn = new Connection(path);
             TranslyteDbGateway = new TranslyteDbGateway(conn);
-            //TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/gg.fb2", Position = 0, IsCurrent = false });
-            ////TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Brodyagi_Dharmy.fb2", Position = 0, IsCurrent = true });
-            ////TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Genri.fb2", Position = 0, IsCurrent = false });
-            //TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Kafka.fb2", Position = 0, IsCurrent = false });
-            //TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Karl.fb2", Position = 0, IsCurrent = false });
-            //TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Pail.fb2", Position = 0, IsCurrent = false });
-            //TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Starik.fb2", Position = 0, IsCurrent = false });
-			//TranslyteDbGateway.DeleteAllBooks();
-            /*if (TranslyteDbGateway.GetBooksLocalReview().Count == 0)
-            {
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/gg.fb2", Position = 0, IsCurrent = false });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Brodyagi_Dharmy.fb2", Position = 0, IsCurrent = true });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Genri.fb2", Position = 0, IsCurrent = false });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Kafka.fb2", Position = 0, IsCurrent = false });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Karl.fb2", Position = 0, IsCurrent = false });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Pail.fb2", Position = 0, IsCurrent = false });
-                TranslyteDbGateway.SaveBookLocal(new BookLocal() { BookPath = "/storage/sdcard0/translyte/Starik.fb2", Position = 0, IsCurrent = false });
-            }*/
             
             _books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
 
@@ -83,7 +65,6 @@ namespace Translyte.Android.Views
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
             listView.ItemClick += OnListItemClick;
-            //BookReviewModel curBook;
 
             if ((CurrentBook = TranslyteDbGateway.GetCurrentBook()) != null)
             {

@@ -14,7 +14,6 @@ using Android.Widget;
 using Translyte.Android;
 using Translyte.Android.Helpers;
 using Translyte.Core.Models;
-using Translyte.Core.ViewModels;
 using Object = Java.Lang.Object;
 
 namespace Translyte.Android

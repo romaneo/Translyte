@@ -29,24 +29,13 @@ namespace Translyte.Android.Views
 		{
 			View parentView = inflater.Inflate(Resource.Layout.FileExplorerView, container, false);
 			ParentView = parentView;
-			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
-			var s = dir.ListFiles ();
-
 			var sqliteFilename = "TaskDB.db3";
 			string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			var path = Path.Combine(libraryPath, sqliteFilename);
 			conn = new Connection(path);
 			TranslyteDbGateway = new TranslyteDbGateway(conn);
-			var localBooks = TranslyteDbGateway.GetBooksLocalReview ();
-			foreach(var t in s)
-			{
-				var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(t.AbsolutePath));
-				_books.Add (new BookReviewModel(){BookPath = t.AbsolutePath, IsLocal = isLocal, Title = t.Name});
-			}
-			adapter = new FileExplorerAdapter(parentView.Context, _books);
-			ListView listView = parentView.FindViewById<ListView>(Resource.Id.FilesListView);
-			listView.Adapter = adapter;
-			listView.ItemClick += OnListItemClick;
+
+			UpdateBooksList ();
 
 			return parentView;
 		}
@@ -60,54 +49,32 @@ namespace Translyte.Android.Views
 			var book = _books[e.Position];
 			if (book.BookPath.Contains (".fb2") && !book.IsLocal) {
 				book.IsLocal = true;
-				//var curBook = new BookReviewModel(fileSystemInfo.FullName);	
 				TranslyteDbGateway.SaveBookLocal (new BookLocal () { BookPath = book.BookPath, Position = 0, IsCurrent = true });
 				TranslyteDbGateway.SetCurrentBook (book);
 				Toast.MakeText(this.Activity, "Loading...", ToastLength.Short).Show();
+				UpdateBooksList ();
 
-				Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
-				var s = dir.ListFiles ();
-
-				_books = new List<BookReviewModel> ();
-				var localBooks = TranslyteDbGateway.GetBooksLocalReview ();
-				foreach(var t in s)
-				{
-					var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(t.AbsolutePath));
-					_books.Add (new BookReviewModel(){BookPath = t.AbsolutePath, IsLocal = isLocal, Title = t.Name});
-				}
-
-				adapter = new FileExplorerAdapter(ParentView.Context, _books);
-				ListView listView = ParentView.FindViewById<ListView>(Resource.Id.FilesListView);
-				listView.Adapter = adapter;
-				listView.ItemClick += OnListItemClick;
-				/*this.FragmentManager
-					.BeginTransaction().AddToBackStack(null)
-					.Replace(Resource.Id.main_fragment, new BookView(), "fragment")
-					.SetTransitionStyle(global::Android.Support.V4.App.FragmentTransaction.TransitFragmentFade)
-					.Commit();*/
 			} else
 				Toast.MakeText(this.Activity, "This book has been already added.", ToastLength.Short).Show();
-			/*var book = _books[e.Position];
-			Book curBook = new BookReviewModel(book.BookPath);
-			//curBook.BookPath = book.BookPath;
-			Book.Load(ref curBook);
-			//Book res = (BookReviewModel) curBook;
-			//var intent = new Intent(this, typeof(BookView));
-			string jsonModel = JsonConvert.SerializeObject(book);
-			// intent.PutExtra("book", jsonModel);
-			//StartActivity(intent);
-			var fragment = new BookView();
-			Bundle bundle = new Bundle();
-			bundle.PutString("book", jsonModel);
-			fragment.Arguments = bundle;
-			ChangeFragment(fragment);
-			TranslyteDbGateway.SetCurrentBook(curBook);
-			if (curBook.ID != CurrentBook.ID)
+		}
+
+		private void UpdateBooksList()
+		{
+			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
+			var files = dir.ListFiles ();
+
+			_books = new List<BookReviewModel> ();
+			var localBooks = TranslyteDbGateway.GetBooksLocalReview ();
+			foreach(var file in files)
 			{
-				CurrentBook = (BookReviewModel)curBook;
-				_books.Clear();
-				_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
-			}*/
+				var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(file.AbsolutePath));
+				_books.Add (new BookReviewModel(){BookPath = file.AbsolutePath, IsLocal = isLocal, Title = file.Name});
+			}
+
+			adapter = new FileExplorerAdapter(ParentView.Context, _books);
+			ListView listView = ParentView.FindViewById<ListView>(Resource.Id.FilesListView);
+			listView.Adapter = adapter;
+			listView.ItemClick += OnListItemClick;
 		}
 	}
 }

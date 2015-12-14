@@ -10,7 +10,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Translyte.Core.Models;
-using Translyte.Core.ViewModels;
 
 namespace Translyte.Android.CustomClasses
 {
