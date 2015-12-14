@@ -7,7 +7,6 @@ using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.DataProvider.SQLiteBase;
 using Translyte.Core.Models;
 using Translyte.Core.Parse;
-using Translyte.Core.ViewModels;
 
 namespace Translyte.Core.DataProvider
 {
@@ -52,6 +51,12 @@ namespace Translyte.Core.DataProvider
 
         public List<BookReviewModel> GetBooksLocalReviewWithoutCurrent()
         {
+            //var s = GetBooksLocalReview();
+            //foreach (var t in s)
+            //{
+            //    _repository.DeleteBookLocal(Int32.Parse(t.ID));
+            //}
+           
             //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/gg.fb2", Position = 0, IsCurrent = false });
             //_repository.SaveBookLocal(new BookLocal() { BookPath = "/sdcard/translyte/Brodyagi_Dharmy.fb2", Position = 0, IsCurrent = true });
             var localBooks = _repository.GetBooksLocal().ToList();
@@ -90,6 +95,12 @@ namespace Translyte.Core.DataProvider
 		{
             return _repository.DeleteBookLocal(id);
 		}
+
+		public void DeleteAllBooks()
+		{
+			_repository.DeleteAllBooks();
+		}
+
 
         public void SetCurrentBook(Book book)
         {

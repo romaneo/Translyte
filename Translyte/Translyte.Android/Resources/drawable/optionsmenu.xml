@@ -2,18 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
-  <item android:id="@+id/addnew"    
-    android:title="Add New"
+  <item android:id="@+id/translate"
+    android:title="Translate"
+    android:icon="@drawable/translate"
     android:showAsAction="always"/>
 
-  <item android:id="@+id/searcher"
-        android:icon="@drawable/Library"
-        android:title="Search"
+  <item android:id="@+id/add_bookmark"
+        android:icon="@drawable/Bookmarks_black"
+        android:title="Add bookmark"
         android:showAsAction="always"/>
 
-  <item android:id="@+id/refresher"
-    android:icon="@drawable/icon_profile"
-    android:title="Refresh"
+  <item android:id="@+id/add_note"
+    android:icon="@drawable/Note"
+    android:title="Add note"
     android:showAsAction="always"/>
 
 </menu>

@@ -2,4 +2,20 @@
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">Translyte.Android</string>
+  <string name="textSizes">Choose text size</string>
+  <string name="textFonts">Choose text font</string>
+  <string-array name="size_array">
+    <item>14</item>
+    <item>16</item>
+    <item>18</item>
+    <item>20</item>
+    <item>22</item>
+  </string-array>
+  <string-array name="font_array">
+    <item>Times New Roman</item>
+    <item>Arial</item>
+    <item>Calibri</item>
+    <item>Comic Sans MS</item>
+    <item>Verdana</item>
+  </string-array>
 </resources>

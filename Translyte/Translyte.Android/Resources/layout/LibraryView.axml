@@ -1,95 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/white"
     android:orientation="vertical"
     android:layout_gravity="fill_horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
+    <LinearLayout
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_gravity="fill_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/main_fragment" />
-<!--menu title-->
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_top">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#2ea3fe" />
-        <FrameLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/titlebar_menu_selector"
-                android:id="@+id/title_bar_left_menu"
-                android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="10dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="7dp"
-                android:text="Translyte DEMO"
-                android:textSize="24sp"
-                android:textColor="#999999"
-                android:layout_gravity="center" />
-            <Button
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@drawable/titlebar_menu_selector"
-                android:id="@+id/title_bar_right_menu"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="10dp" />
-        </FrameLayout>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="#ebebeb" />
-    </LinearLayout>
-<!--last book-->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="100">
-        <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="60dp"
-            android:layout_height="180dp"
-            android:id="@+id/CoverCurrent"
-            android:layout_weight="30"
-            android:padding="10dp"
-            android:scaleType="centerInside" />
+        android:layout_height="match_parent">
+    <!--menu title-->
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="70">
-            <TextView
-                android:text="Title"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/TitleCurrent"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:textSize="30dp" />
-            <TextView
-                android:text="Author"
+            android:id="@+id/layout_top">
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/AuthorCurrent"
-                android:paddingTop="10dp"
-                android:textSize="20dp" />
+                android:layout_height="3dp"
+                android:background="#2ea3fe" />
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/titlebar_menu_selector"
+                    android:id="@+id/title_bar_left_menu"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="10dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:text="Translyte DEMO"
+                    android:textSize="24sp"
+                    android:textColor="#999999"
+                    android:layout_gravity="center" />
+                <Button
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/titlebar_menu_selector"
+                    android:id="@+id/title_bar_right_menu"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginRight="10dp" />
+            </FrameLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#ebebeb" />
         </LinearLayout>
+    <!--last book-->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100">
+            <ImageView
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_width="60dp"
+                android:layout_height="180dp"
+                android:id="@+id/CoverCurrent"
+                android:layout_weight="30"
+                android:padding="10dp"
+                android:scaleType="centerInside" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="70">
+                <TextView
+                    android:text="Title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/TitleCurrent"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:textSize="30dp" />
+                <TextView
+                    android:text="Author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/AuthorCurrent"
+                    android:paddingTop="10dp"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ListView" />
     </LinearLayout>
-    <ListView
-        android:layout_width="fill_parent"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/ListView" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:id="@+id/main_fragment" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/popup_fragment" />
+</RelativeLayout>
