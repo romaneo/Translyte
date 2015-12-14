@@ -1,19 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Preferences;
-using Android.Runtime;
 using Android.Views;
-using Android.Widget;
-using Newtonsoft.Json;
-using Translyte.Android.CustomClasses;
-using Translyte.Core;
-using Translyte.Core.Models;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace Translyte.Android.Views

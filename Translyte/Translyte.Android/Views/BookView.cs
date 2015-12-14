@@ -2,7 +2,6 @@ using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
-using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Util;
 using Android.Widget;
@@ -10,7 +9,6 @@ using Newtonsoft.Json;
 using Translyte.Android.CustomClasses;
 using Translyte.Core;
 using Translyte.Core.Models;
-//using Fragment = Android.Support.V4.App.Fragment;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Views;
 

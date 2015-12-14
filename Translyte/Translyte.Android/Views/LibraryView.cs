@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
@@ -16,7 +14,6 @@ using Translyte.Core;
 using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.Models;
-using Translyte.Core.ViewModels;
 using EnvironmentAnd = Android.OS.Environment;
 using Environment = System.Environment;
 using Fragment = Android.Support.V4.App.Fragment;
@@ -35,8 +32,8 @@ namespace Translyte.Android.Views
         public global::AndroidResideMenu.ResideMenu ResideMenu { get; private set; }
         private LibraryView _context;
         private ResideMenuItem _itemLibrary;
-        private ResideMenuItem _itemProfile;
-        private ResideMenuItem _itemCalendar;
+        private ResideMenuItem _bookBrowser;
+        private ResideMenuItem _bookmarks;
         private ResideMenuItem _itemSettings;
 
         public TranslyteDbGateway TranslyteDbGateway { get; set; }
@@ -55,9 +52,6 @@ namespace Translyte.Android.Views
 			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
 			if (!dir.Exists ())
 				dir.Mkdirs ();
-
-            //if (bundle == null)
-            //    ChangeFragment(new BookView());
 
             var sqliteFilename = "TaskDB.db3";
             string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -101,14 +95,11 @@ namespace Translyte.Android.Views
                 }
                 image.Click += delegate
                 {
-                    //var intent = new Intent(this, typeof(BookView));
                     string jsonModel = JsonConvert.SerializeObject(CurrentBook);
-                    //intent.PutExtra("book", jsonModel);
-                    //StartActivity(intent);
                     var fragment = new BookView();
-                    Bundle bundle2 = new Bundle();
-                    bundle2.PutString("book", jsonModel);
-                    fragment.Arguments = bundle2;
+                    Bundle bookBundle = new Bundle();
+                    bookBundle.PutString("book", jsonModel);
+                    fragment.Arguments = bookBundle;
                     ChangeFragment(fragment);
                 };
                 TextView title = FindViewById<TextView>(Resource.Id.TitleCurrent);
@@ -125,36 +116,26 @@ namespace Translyte.Android.Views
             ResideMenu.SetBackground(Resource.Drawable.menu_background);
             ResideMenu.AttachToActivity(this);
 
-            //Now done with MenuOpened/Closed handlers!
-            //ResideMenu.SetMenuListener(this);
-
-            ResideMenu.MenuOpened += OnMenuOpened2;
-            ResideMenu.MenuClosed += OnMenuClosed;
-
             ResideMenu.SetScaleValue(0.6F);
 
-            // create menu items;
             _itemLibrary = new ResideMenuItem(this, Resource.Drawable.Library, "Library");
-            _itemProfile = new ResideMenuItem(this, Resource.Drawable.icon_profile, "Load books");
-            _itemCalendar = new ResideMenuItem(this, Resource.Drawable.Bookmarks, "Bookmark");
+            _bookBrowser = new ResideMenuItem(this, Resource.Drawable.icon_profile, "Load books");
+            _bookmarks = new ResideMenuItem(this, Resource.Drawable.Bookmarks, "Bookmark");
             _itemSettings = new ResideMenuItem(this, Resource.Drawable.icon_settings, "Settings");
 
             _itemLibrary.SetOnClickListener(this);
-            _itemProfile.SetOnClickListener(this);
-            _itemCalendar.SetOnClickListener(this);
+            _bookBrowser.SetOnClickListener(this);
+            _bookmarks.SetOnClickListener(this);
             _itemSettings.SetOnClickListener(this);
 
             ResideMenu.AddMenuItem(_itemLibrary, global::AndroidResideMenu.ResideMenu.Direction.Left);
-            ResideMenu.AddMenuItem(_itemProfile, global::AndroidResideMenu.ResideMenu.Direction.Left);
-            ResideMenu.AddMenuItem(_itemCalendar, global::AndroidResideMenu.ResideMenu.Direction.Left);
+            ResideMenu.AddMenuItem(_bookBrowser, global::AndroidResideMenu.ResideMenu.Direction.Left);
+            ResideMenu.AddMenuItem(_bookmarks, global::AndroidResideMenu.ResideMenu.Direction.Left);
             ResideMenu.AddMenuItem(_itemSettings, global::AndroidResideMenu.ResideMenu.Direction.Left);
 
-            // You can disable a direction by setting ->
-            //ResideMenu.setSwipeDirectionDisable//(ResideMenu.DIRECTION_RIGHT);
             ResideMenu.SetSwipeDirectionDisable(AndroidResideMenu.ResideMenu.Direction.Right);
 
             FindViewById(Resource.Id.title_bar_left_menu).Click += (s, e) => { ResideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left); };
-            //FindViewById(Resource.Id.title_bar_right_menu).Click += (s, e) => { ResideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Right); };
         }
 
         public override bool DispatchTouchEvent(MotionEvent ev)
@@ -171,24 +152,14 @@ namespace Translyte.Android.Views
 				_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
 				UpdateView();
             }
-            //else if (view == _itemProfile)
-            //{
-            //    ChangeFragment(new ProfileFragment());
-            //}
-            //else if (view == _itemCalendar)
-            //{
-            //    ChangeFragment(new CalendarFragment());
-            //}
-            //else 
             if (view == _itemSettings)
             {
                 ChangeFragment(new SettingsView());
             }
-            if (view == _itemProfile)
+            if (view == _bookBrowser)
             {
                 ChangeFragment(new FileExplorerView());
             }
-
             ResideMenu.CloseMenu();
         }
 
@@ -201,16 +172,6 @@ namespace Translyte.Android.Views
                     .Replace(Resource.Id.main_fragment, targetFragment, "fragment")
                     .SetTransitionStyle(global::Android.Support.V4.App.FragmentTransaction.TransitFragmentFade)
                     .Commit();
-        }
-
-        private void OnMenuOpened2(object sender, EventArgs e)
-        {
-            //Toast.MakeText(this, "Menu is opened!", ToastLength.Short).Show();
-        }
-
-        private void OnMenuClosed(object sender, EventArgs e)
-        {
-            //Toast.MakeText(this, "Menu is closed!", ToastLength.Short).Show();
         }
 
         protected override void OnRestart()

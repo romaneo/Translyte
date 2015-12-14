@@ -17,15 +17,7 @@ namespace Translyte.Android.CustomClasses
         }
 
         private TextView book;
-        private string _transWord;
-        private bool _isTrans = false;
-        private async void Translate(string text)
-        {
-            var tr = new Translator("en", "ua");
-            _transWord = await tr.Translate(text);
-            _isTrans = true;
 
-        }
         public bool OnActionItemClicked(ActionMode mode, IMenuItem item)
         {
             switch (item.ItemId)
@@ -44,17 +36,14 @@ namespace Translyte.Android.CustomClasses
                     var selectedText = book.Text.Substring(min, max - min);
                     try
                     {
-                        var tr = new Translator("en", "ru");
-                        var res = tr.Translate(selectedText).GetAwaiter().GetResult();
-                    //    Toast.MakeText(ParentActivity, res, ToastLength.Short).Show();
+                        var translator = new Translator("en", "ru");
+                        var res = translator.Translate(selectedText).GetAwaiter().GetResult();
                         ShowEditDialog(selectedText, res);
                     }
                     catch (System.Exception)
                     {                        
                         Toast.MakeText(ParentActivity, "Missing internet connection", ToastLength.Short).Show();
                     }
-                    // Finish and close the ActionMode
-                    
                     mode.Finish();
                     return true;
                 default:
@@ -66,11 +55,12 @@ namespace Translyte.Android.CustomClasses
         private void ShowEditDialog(string orign, string translate)
         {
             var fm = ParentActivity.FragmentManager.BeginTransaction();
-            TranslateMessage editNameDialog = new TranslateMessage();
-            editNameDialog.Original = orign;
-            editNameDialog.Translation = translate;
-
-            editNameDialog.Show(fm, "TranslateMessage");
+            var translateDialog = new TranslateMessage
+            {
+                Original = orign,
+                Translation = translate
+            };
+            translateDialog.Show(fm, "TranslateMessage");
         }
 
         public Activity ParentActivity { get; set; }
@@ -78,7 +68,6 @@ namespace Translyte.Android.CustomClasses
         public bool OnCreateActionMode(ActionMode mode, IMenu menu)
         {
             ParentActivity.MenuInflater.Inflate(Resource.Drawable.optionsmenu, menu);
-            //menu.Add(0, 0, 0, "Translate").SetIcon(Resource.Drawable.translate);
             return true;
         }
 
@@ -88,11 +77,8 @@ namespace Translyte.Android.CustomClasses
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
         {
-            menu.RemoveItem(global::Android.Resource.Id.SelectAll);//Resource.Id.SelectAll);
-            //menu.RemoveItem(Resource.Id.Cut);//17039363);
-            //menu.RemoveItem(Resource.Id.Copy);//16908321);
+            menu.RemoveItem(global::Android.Resource.Id.SelectAll);
             return true;
         }
-
     }
 }

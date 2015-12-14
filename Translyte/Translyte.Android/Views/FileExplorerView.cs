@@ -2,24 +2,14 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Preferences;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Newtonsoft.Json;
-using Android.Support.V4.App;
-using Translyte.Android.CustomClasses;
-using Translyte.Core;
 using Translyte.Core.DataProvider;
 using Translyte.Core.DataProvider.SQLite;
 using Translyte.Core.Models;
 using SupportFragment = Android.Support.V4.App.Fragment;
-using Android.Support.V4.App;
 using EnvironmentAnd = Android.OS.Environment;
 using Environment = System.Environment;
 
