@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Core", "Translyte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Android", "Translyte.Android\Translyte.Android.csproj", "{A267BCFC-4AAC-4533-BF7D-1742A4B2578D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Translyte.Test", "Translyte.Test\Translyte.Test.csproj", "{555A5BFA-0F58-4A38-8C0C-4BFC801EE50A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
