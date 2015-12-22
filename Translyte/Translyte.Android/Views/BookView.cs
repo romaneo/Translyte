@@ -35,7 +35,7 @@ namespace Translyte.Android.Views
             var title = parentView.FindViewById<TextView>(Resource.Id.tv_title);
             TextView content = parentView.FindViewById<TextView>(Resource.Id.tv_book);
             content.SetTextIsSelectable(true);
-            content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity);
+			content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, CurrentBook.Language);
 
             parentView.FindViewById(Resource.Id.tv_book).Click += (s, e) => resideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left);
 
