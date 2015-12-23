@@ -11,15 +11,23 @@ namespace Translyte.Core.Models
     {
         public BookFullModel(string bookPath) 
             : base(bookPath) {}
-
         public List<string> Genres { get; set; }
-
         public List<ChapterModel> Chapters { get; set; }
-
+        public string Content
+        {
+            get
+            {
+                var res = "";
+                foreach(var c in Chapters)
+                {
+                    res += c.Title + c.Content;
+                }
+                return res;
+            }
+            private set { }
+        }
         public string Annotation { get; set; }
-
         public string Year { get; set; }
-
         public string Language { get; set; }
     }
 }

@@ -13,7 +13,8 @@
         android:layout_height="fill_parent"
         android:id="@+id/sv_bookContent"
         android:scrollbars="vertical"
-        android:scrollbarAlwaysDrawVerticalTrack="false">
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollY="100px">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"

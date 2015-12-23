@@ -74,7 +74,8 @@ namespace Translyte.Android.Views
                     var img = new BitmapConverteHelper().GetCover(CurrentBook.Cover);
                     image.SetImageBitmap(img);
                 }
-                image.Click += delegate
+                LinearLayout last_book_view = FindViewById<LinearLayout>(Resource.Id.last_book_view);
+                last_book_view.Click += delegate
                 {
                     string jsonModel = JsonConvert.SerializeObject(CurrentBook);
                     var fragment = new BookView();

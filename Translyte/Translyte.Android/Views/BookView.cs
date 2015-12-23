@@ -88,7 +88,7 @@ namespace Translyte.Android.Views
                     Thread.CurrentThread.IsBackground = true;
                     Book curBook = new BookFullModel(tempBook.BookPath);
                     Book.Load(ref curBook);
-                    content.Text = ((BookFullModel)curBook).Chapters[0].Content;
+                    content.Text = ((BookFullModel)curBook).Content;
                 });
             }
             return parentView;
