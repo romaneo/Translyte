@@ -59,7 +59,7 @@ namespace Translyte.Android.CustomClasses
 
 		private void ConfigureTranslator ()
 		{
-				if (_langFrom.Equals("ru"))
+				if (_langFrom.ToLower().Equals("ru"))
 					_langTo = "en";
 				else _langTo = "ru";
 		}
