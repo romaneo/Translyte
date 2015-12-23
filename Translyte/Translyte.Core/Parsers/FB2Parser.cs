@@ -40,7 +40,7 @@ namespace Translyte.Core.Parsers
                 return;
             ((BookFullModel)book).Annotation = Has("annotation", titleInfo)
                 ? GetFormattedString(titleInfo.Where(x => x.Name.LocalName == "annotation").SingleOrDefault().Elements()) : "";
-            ((BookFullModel)book).Language = GetLanguage(titleInfo.Where(x => x.Name.LocalName == "lang").SingleOrDefault().Value);
+            ((BookFullModel)book).Language = titleInfo.Where(x => x.Name.LocalName == "lang").SingleOrDefault().Value;
             ((BookFullModel)book).Year = Has("date",titleInfo)?titleInfo.Where(x => x.Name.LocalName == "date").SingleOrDefault().Value:"";
             ((BookFullModel)book).Genres =
                 new List<string>(titleInfo.Where(x => x.Name.LocalName == "genre").Select(x => GetGenre(x.Value)));
@@ -90,8 +90,7 @@ namespace Translyte.Core.Parsers
         //This function returns language name by given code name.
         private string GetLanguage(string langCode)
         {
-			return langCode;
-            /*switch (langCode)
+            switch (langCode)
             {
                 case "abk": case "ab": return "Abkhazian"; 
                 case "aze": case "az": return "Azerbaijan"; 
@@ -147,7 +146,7 @@ namespace Translyte.Core.Parsers
                 case "est": case "et": return "Estonian";
                 case "jpn": case "ja": return "Japanese";
                 default: return "Not set";
-            }*/
+            }
         }
         //This function returns genre name by genre code.
         private string GetGenre(string genreCode)

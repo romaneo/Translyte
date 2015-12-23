@@ -88,12 +88,8 @@ namespace Translyte.Android.Views
                     Thread.CurrentThread.IsBackground = true;
                     Book curBook = new BookFullModel(tempBook.BookPath);
                     Book.Load(ref curBook);
-<<<<<<< HEAD
                     content.Text = ((BookFullModel)curBook).Content;
-=======
-                    content.Text = ((BookFullModel)curBook).Chapters[0].Content;
-						content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
->>>>>>> origin/master
+					content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
                 });
             }
             return parentView;
