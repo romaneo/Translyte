@@ -22,28 +22,28 @@ namespace Translyte.Android.Views
             get;
             set;
         }
-
-        public BookFullModel CurrentBook { get; set; }
+        private View ParentView { get; set; }
+        
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View parentView = inflater.Inflate(Resource.Layout.BookView, container, false);
+            ParentView = inflater.Inflate(Resource.Layout.BookView, container, false);
             LibraryView parentActivity = Activity as LibraryView;
             ParentActivity = parentActivity;
             HasOptionsMenu = true;
             var resideMenu = parentActivity.ResideMenu;
 
-            var title = parentView.FindViewById<TextView>(Resource.Id.tv_title);
-            TextView content = parentView.FindViewById<TextView>(Resource.Id.tv_book);
+            var title = ParentView.FindViewById<TextView>(Resource.Id.tv_title);
+            TextView content = ParentView.FindViewById<TextView>(Resource.Id.tv_book);
             content.SetTextIsSelectable(true);
 
 
-            parentView.FindViewById(Resource.Id.tv_book).Click += (s, e) => resideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left);
+            ParentView.FindViewById(Resource.Id.tv_book).Click += (s, e) => resideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left);
 
             ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
             var isDark = prefs.GetBoolean("themeDark", false);
             if (isDark)
             {
-                var layout = parentView.FindViewById<RelativeLayout>(Resource.Id.bookLayout);
+                var layout = ParentView.FindViewById<RelativeLayout>(Resource.Id.bookLayout);
                 layout.SetBackgroundColor(Color.DarkGray);
                 content.SetTextColor(Color.WhiteSmoke);
                 title.SetTextColor(Color.WhiteSmoke);
@@ -53,8 +53,6 @@ namespace Translyte.Android.Views
 			title.SetTextSize(ComplexUnitType.Dip, size + 5);
 
 			var textFont = prefs.GetString("textFont", "Arial");
-			//if (isLarge)
-			//{
 			var res="";
 			switch(textFont)
 			{
@@ -74,8 +72,7 @@ namespace Translyte.Android.Views
 			Typeface tf = Typeface.CreateFromAsset (Application.Context.Assets, "fonts/" + res + ".ttf");
 			content.Typeface = tf;
 			title.SetTextSize(ComplexUnitType.Dip, 25);
-
-            //var extraData = parentActivity.Intent.GetStringExtra("book");
+            
             string extraData = null;
             if (Arguments != null)
                 extraData = Arguments.GetString("book");
@@ -89,23 +86,18 @@ namespace Translyte.Android.Views
                     Book curBook = new BookFullModel(tempBook.BookPath);
                     Book.Load(ref curBook);
                     content.Text = ((BookFullModel)curBook).Content;
-					content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
+                    content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
                 });
             }
-            return parentView;
+            return ParentView;
         }
 
-
-        //protected override void OnSaveInstanceState(Bundle outState)
-        //{
-        //    outState.PutInt("counter", c);
-        //    base.OnSaveInstanceState(outState);
-        //}
-        //protected override void OnRestoreInstanceState(Bundle savedState)
-        //{
-        //    base.OnRestoreSaveInstanceState(savedState);
-        //    var myString = savedState.GetString("myString”);
-        //    var myBool = GetBoolean("myBool”);
-        //}
+        public override void OnDestroy()
+        {
+            var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
+            var position = scroll.ScrollY;
+            //TODO: save position to global book object
+            base.OnDestroy();
+        }
     }
 }
