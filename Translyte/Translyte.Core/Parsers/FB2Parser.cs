@@ -90,7 +90,8 @@ namespace Translyte.Core.Parsers
         //This function returns language name by given code name.
         private string GetLanguage(string langCode)
         {
-            switch (langCode)
+			return langCode;
+            /*switch (langCode)
             {
                 case "abk": case "ab": return "Abkhazian"; 
                 case "aze": case "az": return "Azerbaijan"; 
@@ -146,7 +147,7 @@ namespace Translyte.Core.Parsers
                 case "est": case "et": return "Estonian";
                 case "jpn": case "ja": return "Japanese";
                 default: return "Not set";
-            }
+            }*/
         }
         //This function returns genre name by genre code.
         private string GetGenre(string genreCode)

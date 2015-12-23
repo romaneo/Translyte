@@ -10,10 +10,14 @@ namespace Translyte.Android.CustomClasses
 {
     public class WordSelector : Java.Lang.Object, ActionMode.ICallback
     {
-        public WordSelector(TextView book, Activity activity)
+		private string _langTo;
+		private string _langFrom;
+
+		public WordSelector(TextView book, Activity activity, string lang)
         {
             ParentActivity = activity;
             this.book = book;
+			_langFrom = lang;
         }
 
         private TextView book;
@@ -36,7 +40,8 @@ namespace Translyte.Android.CustomClasses
                     var selectedText = book.Text.Substring(min, max - min);
                     try
                     {
-                        var translator = new Translator("en", "ru");
+						ConfigureTranslator();
+						var translator = new Translator(_langFrom, _langTo);
                         var res = translator.Translate(selectedText).GetAwaiter().GetResult();
                         ShowEditDialog(selectedText, res);
                     }
@@ -51,6 +56,13 @@ namespace Translyte.Android.CustomClasses
             }
             return false;
         }
+
+		private void ConfigureTranslator ()
+		{
+				if (_langFrom.Equals("ru"))
+					_langTo = "en";
+				else _langTo = "ru";
+		}
 
         private void ShowEditDialog(string orign, string translate)
         {
@@ -76,7 +88,7 @@ namespace Translyte.Android.CustomClasses
         }
 
         public bool OnPrepareActionMode(ActionMode mode, IMenu menu)
-        {
+        { 
             menu.RemoveItem(global::Android.Resource.Id.SelectAll);
             return true;
         }

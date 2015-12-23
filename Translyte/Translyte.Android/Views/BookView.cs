@@ -35,7 +35,7 @@ namespace Translyte.Android.Views
             var title = parentView.FindViewById<TextView>(Resource.Id.tv_title);
             TextView content = parentView.FindViewById<TextView>(Resource.Id.tv_book);
             content.SetTextIsSelectable(true);
-            content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity);
+
 
             parentView.FindViewById(Resource.Id.tv_book).Click += (s, e) => resideMenu.OpenMenu(global::AndroidResideMenu.ResideMenu.Direction.Left);
 
@@ -88,7 +88,12 @@ namespace Translyte.Android.Views
                     Thread.CurrentThread.IsBackground = true;
                     Book curBook = new BookFullModel(tempBook.BookPath);
                     Book.Load(ref curBook);
+<<<<<<< HEAD
                     content.Text = ((BookFullModel)curBook).Content;
+=======
+                    content.Text = ((BookFullModel)curBook).Chapters[0].Content;
+						content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
+>>>>>>> origin/master
                 });
             }
             return parentView;

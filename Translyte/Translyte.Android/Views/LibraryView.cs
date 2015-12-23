@@ -49,15 +49,17 @@ namespace Translyte.Android.Views
             _context = this;
             SetupMenu();
 
-			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
-			if (!dir.Exists ())
-				dir.Mkdirs ();
-
             var sqliteFilename = "TaskDB.db3";
             string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             var path = Path.Combine(libraryPath, sqliteFilename);
             conn = new Connection(path);
             TranslyteDbGateway = new TranslyteDbGateway(conn);
+
+			Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
+			if (!dir.Exists ()) {
+				dir.Mkdirs ();
+				TranslyteDbGateway.DeleteAllBooks ();
+			}				
             
             _books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
 
