@@ -96,12 +96,8 @@ namespace Translyte.Android.Views
                     Book.Load(ref curBook);
                     content.Text = ((BookFullModel)curBook).Content;
                     content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
-					var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
-					scroll.ScrollBy(0, curBook.Position);
-					//scroll.ScrollTo(10, 300);
+                    SetPosition(curBook.Position);
 					_currentBook = (BookFullModel)curBook;
-
-
 					var sqliteFilename = "TaskDB.db3";
 					string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 					var path = Path.Combine(libraryPath, sqliteFilename);
@@ -111,21 +107,31 @@ namespace Translyte.Android.Views
             }
             return ParentView;
         }
-		public override void OnResume ()
-		{
-			base.OnResume ();
-		}
-		public override void OnPause ()
-		{
-			ParentActivity.RunOnUiThread(() =>
-				{
-					Thread.CurrentThread.IsBackground = true;
-					var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
-					_currentBook.Position = scroll.ScrollY;
-					_translyteDbGateway.UpdateBookPosition(new BookLocal(){BookPath = _currentBook.BookPath, IsCurrent = true, Position = _currentBook.Position});
+        //This function restores last reading position in book 
+        //by scrolling to position needed.
+        private void SetPosition(int position)
+        {
+            var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
+            scroll.Post(new Java.Lang.Runnable(delegate
+            {
+                scroll.ScrollTo(0, position);
+            }));
+        }
+        public override void OnResume()
+        {
+            base.OnResume();
+        }
+        public override void OnPause()
+        {
+            ParentActivity.RunOnUiThread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
+                    _currentBook.Position = scroll.ScrollY;
+                    _translyteDbGateway.UpdateBookPosition(new BookLocal() { BookPath = _currentBook.BookPath, IsCurrent = true, Position = _currentBook.Position });
 
-				});
-			base.OnPause ();
-		}
+                });
+            base.OnPause();
+        }
     }
 }
