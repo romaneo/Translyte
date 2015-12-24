@@ -18,6 +18,7 @@ namespace Translyte.Core.Models
             get
             {
                 var res = "";
+				if (Chapters != null)
                 foreach(var c in Chapters)
                 {
                     res += c.Title + c.Content;

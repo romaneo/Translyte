@@ -63,6 +63,13 @@ namespace Translyte.Core.DataProvider.SQLite
             var s = GetBooksLocal();
         }
 
+		public void UpdateBookPosition(BookLocal book)
+		{
+			var lBook = db.GetItems<BookLocal>().FirstOrDefault(x => x.BookPath == book.BookPath);
+			lBook.Position = book.Position;
+			db.SaveItem (lBook);
+		}
+
         public BookLocal GetBookByPath(string path)
         {
             return  db.GetItems<BookLocal>().ToList().FirstOrDefault(x=>x.BookPath.Equals(path));

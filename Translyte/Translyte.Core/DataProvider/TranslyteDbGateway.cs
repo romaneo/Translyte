@@ -81,6 +81,7 @@ namespace Translyte.Core.DataProvider
             if (localBook != null)
             {
                 curBook.BookPath = localBook.BookPath;
+				curBook.Position = localBook.Position;
                 Book.Load(ref curBook);
             }
             return (BookReviewModel)curBook;
@@ -109,6 +110,11 @@ namespace Translyte.Core.DataProvider
             BookLocal local = new BookLocal() { BookPath = book.BookPath, Position = book.Position, IsCurrent = true};
             _repository.SetCurrentBook(local);
         }
+
+		public void UpdateBookPosition(BookLocal book)
+		{
+			_repository.UpdateBookPosition (book);
+		}
         
     }
 }

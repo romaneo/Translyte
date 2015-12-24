@@ -1,4 +1,5 @@
 using System.Threading;
+using Path = System.IO.Path;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -11,6 +12,9 @@ using Translyte.Core;
 using Translyte.Core.Models;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using Android.Views;
+using Translyte.Core.DataProvider;
+using Translyte.Core.DataProvider.SQLite;
+using Environment = System.Environment;
 
 namespace Translyte.Android.Views
 {
@@ -22,6 +26,10 @@ namespace Translyte.Android.Views
             get;
             set;
         }
+
+		private BookFullModel _currentBook;
+		private TranslyteDbGateway _translyteDbGateway;
+
         private View ParentView { get; set; }
         
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -29,6 +37,7 @@ namespace Translyte.Android.Views
             ParentView = inflater.Inflate(Resource.Layout.BookView, container, false);
             LibraryView parentActivity = Activity as LibraryView;
             ParentActivity = parentActivity;
+
             HasOptionsMenu = true;
             var resideMenu = parentActivity.ResideMenu;
 
@@ -83,21 +92,40 @@ namespace Translyte.Android.Views
                 parentActivity.RunOnUiThread(() =>
                 {
                     Thread.CurrentThread.IsBackground = true;
-                    Book curBook = new BookFullModel(tempBook.BookPath);
+					Book curBook = new BookFullModel(tempBook.BookPath){Position = tempBook.Position};
                     Book.Load(ref curBook);
                     content.Text = ((BookFullModel)curBook).Content;
                     content.CustomSelectionActionModeCallback = new WordSelector(content, ParentActivity, ((BookFullModel)curBook).Language);
+					var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
+					scroll.ScrollBy(0, curBook.Position);
+					//scroll.ScrollTo(10, 300);
+					_currentBook = (BookFullModel)curBook;
+
+
+					var sqliteFilename = "TaskDB.db3";
+					string libraryPath = System.Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+					var path = Path.Combine(libraryPath, sqliteFilename);
+					var conn = new Connection(path);
+					_translyteDbGateway = new TranslyteDbGateway(conn);
                 });
             }
             return ParentView;
         }
+		public override void OnResume ()
+		{
+			base.OnResume ();
+		}
+		public override void OnPause ()
+		{
+			ParentActivity.RunOnUiThread(() =>
+				{
+					Thread.CurrentThread.IsBackground = true;
+					var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
+					_currentBook.Position = scroll.ScrollY;
+					_translyteDbGateway.UpdateBookPosition(new BookLocal(){BookPath = _currentBook.BookPath, IsCurrent = true, Position = _currentBook.Position});
 
-        public override void OnDestroy()
-        {
-            var scroll = ParentView.FindViewById<ScrollView>(Resource.Id.sv_bookContent);
-            var position = scroll.ScrollY;
-            //TODO: save position to global book object
-            base.OnDestroy();
-        }
+				});
+			base.OnPause ();
+		}
     }
 }
