@@ -2,6 +2,7 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using SupportFragment = Android.Support.V4.App.Fragment;
@@ -26,7 +27,18 @@ namespace Translyte.Android.Views
 				editor.PutBoolean("themeDark", e.IsChecked);
 				editor.Apply();
 			};
+			var s2 = parentView.FindViewById<Switch> (Resource.Id.appThemeSwitch);
+			//ISharedPreferences pref = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+			isDark = pref.GetBoolean("appThemeDark", false);
+			s2.Checked = isDark;
 
+			s2.CheckedChange += delegate(object sender, CompoundButton.CheckedChangeEventArgs e) {
+				ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+				ISharedPreferencesEditor editor = prefs.Edit();
+				editor.PutBoolean("appThemeDark", e.IsChecked);
+				editor.Apply();
+
+			};
             //var themeRadioButton = parentView.FindViewById<RadioButton>(Resource.Id.themeRadioButton);
 
             /*themeRadioButton.Click += delegate

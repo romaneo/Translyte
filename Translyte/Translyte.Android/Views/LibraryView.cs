@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using Android.App;
+using Android.Util;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Content;
 using Android.Widget;
 using AndroidResideMenu;
 using Newtonsoft.Json;
@@ -47,6 +49,8 @@ namespace Translyte.Android.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+
+
             SetContentView(Resource.Layout.LibraryView);
             _context = this;
             SetupMenu();
@@ -199,6 +203,14 @@ namespace Translyte.Android.Views
 
         private void UpdateView()
         {
+			ISharedPreferences prefs = Application.Context.GetSharedPreferences("Settings", FileCreationMode.Private);
+			var isDark = prefs.GetBoolean("appThemeDark", false);
+			if (isDark)
+			{
+				this.SetTheme(global::Android.Resource.Style.ThemeHolo);
+			}
+			else 
+				this.SetTheme(global::Android.Resource.Style.ThemeHoloLight);
 			adapter = new GalleryAdapter(this, _books);
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
@@ -229,10 +241,11 @@ namespace Translyte.Android.Views
 						var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(file.AbsolutePath));
 						if (!isLocal) {
 							TranslyteDbGateway.SaveBookLocal(new BookLocal(){BookPath = file.AbsolutePath, Position = 0, IsCurrent = false});
-							_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
-							adapter = new GalleryAdapter(this, _books);
+
 						}
 					}
+					_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
+					adapter = new GalleryAdapter(this, _books);
 
 				});
         }
