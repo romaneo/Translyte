@@ -1,5 +1,7 @@
 using System;
+using System.Threading;
 using System.Collections.Generic;
+using System.Linq;
 using System.IO;
 using Android.App;
 using Android.OS;
@@ -60,10 +62,10 @@ namespace Translyte.Android.Views
 				dir.Mkdirs ();
 				TranslyteDbGateway.DeleteAllBooks ();
 			}				
-            
-            _books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
+			UpdateView ();
+            //_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
 
-            adapter = new GalleryAdapter(this, _books);
+            //adapter = new GalleryAdapter(this, _books);
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
             listView.ItemClick += OnListItemClick;
@@ -197,7 +199,7 @@ namespace Translyte.Android.Views
 
         private void UpdateView()
         {
-            adapter = new GalleryAdapter(this, _books);
+			adapter = new GalleryAdapter(this, _books);
             ListView listView = FindViewById<ListView>(Resource.Id.ListView);
             listView.Adapter = adapter;
             if ((CurrentBook = TranslyteDbGateway.GetCurrentBook()) != null)
@@ -215,6 +217,24 @@ namespace Translyte.Android.Views
                 TextView author = FindViewById<TextView>(Resource.Id.AuthorCurrent);
                 author.Text = CurrentBook.Author;
             }
+			RunOnUiThread(() =>
+				{
+					Thread.CurrentThread.IsBackground = true;
+					Java.IO.File dir =  new Java.IO.File(EnvironmentAnd.ExternalStorageDirectory.AbsolutePath + @"/translyte");
+					var files = dir.ListFiles ();
+
+					var localBooks = TranslyteDbGateway.GetBooksLocalReview ();
+					foreach(var file in files)
+					{
+						var isLocal = localBooks.Any (ss=>ss.BookPath.Equals(file.AbsolutePath));
+						if (!isLocal) {
+							TranslyteDbGateway.SaveBookLocal(new BookLocal(){BookPath = file.AbsolutePath, Position = 0, IsCurrent = false});
+							_books = TranslyteDbGateway.GetBooksLocalReviewWithoutCurrent();
+							adapter = new GalleryAdapter(this, _books);
+						}
+					}
+
+				});
         }
     }
 }
